@@ -1063,12 +1063,12 @@
                      background-color: white;
                      
                      @include tablet {
-                     width: 400px;
+                     width: 250px;
                      height: auto;
                      padding-top: 7px;
                     }
                     @include mobile {
-                      width: 300px;
+                      width: 250px;
                       height: auto;
                       padding-top: 7px;
                      }
