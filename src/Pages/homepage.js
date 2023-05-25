@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/HomepageComponents/navbar";
 import MiniHeader from "../components/HomepageComponents/miniheader";
+import Footer from '.././components/footer'
 
 import HomePageGalleryBody from "../components/HomepageComponents/homepagegallerybody";
 const HomePage = () =>{
@@ -11,6 +12,7 @@ const HomePage = () =>{
             <Navbar/>
             <MiniHeader/>
             <HomePageGalleryBody/>
+            <Footer/>
             
         </div>
     )
