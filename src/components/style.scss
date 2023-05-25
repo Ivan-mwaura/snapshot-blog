@@ -944,8 +944,13 @@
               flex-direction: row;
               padding-right: 20px;
 
+              @include mobile{
+                margin-right: 20px;
+              }
+
               .explore{
                 padding-top: 10px;
+
                 @include mobile{
                   display: none;
                 }
@@ -959,6 +964,10 @@
                 padding-top:17px;
                 margin-top: 5px;
                 margin-left: 30px;
+
+                @include tablet{
+                  margin-left: 10px;
+                }
                 &:hover{
                   background-color: #d7dbdf;
                   border-radius: 50%;
@@ -1103,7 +1112,9 @@
   display: flex;
   padding-top: 10px;
   justify-content: center;
-
+  position: relative;
+  left: 0;
+  right: 0;
   .mini-header-wrap {
     display: flex;
     flex-direction: column;
