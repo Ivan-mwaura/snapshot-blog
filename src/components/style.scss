@@ -1032,8 +1032,8 @@
 
                 .search--container{
                   position: relative;
-                    width: 100%;
-                    height: auto;
+                    
+                    width: 80%;
                      height: 40px;
                      background-color:white;
                      border-radius: 20px;
@@ -1041,12 +1041,16 @@
 
                      @include tablet{
                         padding-left: 10px;
+                        width: auto;
+                     }
+                     @include pad{
+                      width:auto;
                      }
 
 
                   .search--bar{
 
-                    width: 800px;
+                    width:500px;
                      height: 40px;
                      outline: none;
                      padding-left: 6px;            
@@ -1060,11 +1064,7 @@
                      height: auto;
                      padding-top: 7px;
                     }
-                    @include pad{
-                      width: 400px;
-                     height: auto;
-                     padding-top: 7px;
-                    }
+                  
          
                      &:hover{
                        
