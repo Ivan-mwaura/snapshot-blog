@@ -1046,6 +1046,9 @@
                      @include pad{
                       width:auto;
                      }
+                     @include mobile{
+                      width:auto;
+                     }
 
 
                   .search--bar{
@@ -1064,8 +1067,13 @@
                      height: auto;
                      padding-top: 7px;
                     }
+                    @include mobile {
+                      width: 300px;
+                      height: auto;
+                      padding-top: 7px;
+                     }
                   
-         
+                    
                      &:hover{
                        
                        border: none;
