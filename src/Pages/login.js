@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
+
 import { Link } from 'react-router-dom';
 
 const LogIn = () => {
@@ -18,7 +20,7 @@ const LogIn = () => {
     const password = formData.get('password');
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/');
+      navigate('*');
      
     } catch (err) {
       setErr(err);
@@ -26,6 +28,27 @@ const LogIn = () => {
 
     }
   };
+
+  function handleKey(event){
+      if(event.key === 'Enter'){
+        event.preventDefault();
+        handleLogin(event)
+      }
+  }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate('/');
+      }
+    });
+
+    return () => {
+      unsubscribe();
+   
+    };
+  }, [navigate]);
+
 
   return (
     <div className="formContainer">
@@ -36,9 +59,9 @@ const LogIn = () => {
         <form onSubmit={handleLogin} id="loginForm">
           <input type="email" name="email" placeholder="email" />
           <input type="password" name="password" placeholder="password" />
-          <button type="submit">Log in</button>
+          <button type="submit" onKeyPress={handleKey}>Log in</button>
             {err && <p className='invalid--login'>Invalid username... try again</p>}
-        { !err && loading && <p className='loading'>loading... Youre being redirected to the main page in a few</p> }
+        { !err && loading && <p className='loading'>loading... Youre being redirected to the <br/>main page in a few</p> }
         
 
         </form>

@@ -30,7 +30,7 @@ const Mainpage = () => {
   return (
     <div>
       <TransitionGroup>
-        <CSSTransition key={location.key} classNames="fade" timeout={500}>
+        <CSSTransition key={location.key} classNames="fade" timeout={300} >
           <Routes>
 
             <Route path="*" index element={

@@ -8,6 +8,8 @@ import { setQuery } from '../../ReduxStore/store'
 import { useNavigate } from 'react-router'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { auth } from '../../firebase';
+import zebra from '../Images//zebra-7853009_1920.jpg'
 
 
 const Navbar = () => {
@@ -53,13 +55,20 @@ const Navbar = () => {
         }
       };
       
-    
+  const handleSignOut = async() => {
+try {
+  await auth.signOut()
+  navigate('/login')
+} catch (err) {
+  console.log(err)
+}
+    }
     return(
     <div className='navbar--container'>
       <div className={`navbar ${scrollDirection === 'up' ? 'scroll-up' : ''}` } ref = {navbarRef}>
         <span className = 'website--name'>    
             <h1 className='snapshot--name'>SnapShot</h1>
-            {/*<button onClick={() => app.auth().signOut()}>SignOut</button>*/}
+            
         </span>
 
         <div className='navbar-top-left-items'>
@@ -75,7 +84,8 @@ const Navbar = () => {
           />
         </span>
             <div className='profile'>
-                <img  src='' alt='' className='my--profile'/>
+                <img  src={zebra} alt='' className='my--profile'/>
+                <button onClick={handleSignOut} className='signout'>SignOut</button>
             </div>
             
             

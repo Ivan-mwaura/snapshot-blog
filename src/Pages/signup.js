@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import  { auth } from "../firebase";
+import { onAuthStateChanged } from 'firebase/auth';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUp = () => {
@@ -32,6 +33,25 @@ const SignUp = () => {
       }
     };
 
+    function  handleKey(event){
+      if(event.key === 'Enter'){
+        event.preventDefault()
+        handleSignUp(event)
+      }
+     
+    }
+
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          navigate('/');
+        }
+      });
+  
+      return () => {
+        unsubscribe();
+      };
+    }, [navigate]);
   return (
     <div className="formContainer">
        <div className="formWrapper">
@@ -41,7 +61,7 @@ const SignUp = () => {
         <form onSubmit={handleSignUp} id="signinForm">
             <input required type="email" name="email" placeholder="email" />
             <input required type="password" name="password" placeholder="password" />
-            <button type="submit" onClick={handleSignUp}>Register</button>
+            <button type="submit" onClick={handleSignUp} onKeyPress={handleKey}>Register</button>
            {err && <p className="error--message">That email is already registered to another account,
            <br/> please proceed to <Link to={'/login'}>Login</Link></p>}
            
