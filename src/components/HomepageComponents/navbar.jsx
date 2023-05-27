@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
+
 const Navbar = () => {
   const [scrollDirection, setScrollDirection] = useState('down');
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -58,6 +59,7 @@ const Navbar = () => {
       <div className={`navbar ${scrollDirection === 'up' ? 'scroll-up' : ''}` } ref = {navbarRef}>
         <span className = 'website--name'>    
             <h1 className='snapshot--name'>SnapShot</h1>
+            {/*<button onClick={() => app.auth().signOut()}>SignOut</button>*/}
         </span>
 
         <div className='navbar-top-left-items'>

@@ -26,6 +26,105 @@
 }
 
 
+.formContainer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image:  url('../components//Images/gradient-7258997_1920.png');
+  background-repeat: no-repeat();
+
+  
+
+  .formWrapper {
+    background-color: white ;
+    padding: 40px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+
+    .logo {
+      color: green;
+      font-weight: 1000;
+      font-size: 35px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    }
+
+    .title {
+      color: green;
+      font-size: 17px;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-style: oblique;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      
+      .loading{
+        color: green;
+        font-size: 14px;
+        margin-top: 0;
+        font-style: oblique;
+        
+        z-index: 999;
+        
+      }
+      .invalid--login{
+       
+        z-index: 999;
+        color: red;
+        font-size: 14px;
+        margin-top: 0;
+        font-style: oblique;
+      }
+      input {
+        padding: 20px;
+        border: none;
+        width: 300px;
+        outline-color: green;
+        margin-top: 10px;
+        border-bottom: 1px solid #a7bcff;
+        background-color: white  transparentize($color: #000000, $amount: 0);
+
+        &::placeholder {
+          color: rgb(175, 175, 175);
+          font-style: italic;
+        }
+      }
+
+      button {
+        background-color: #7b96ec;
+        color: white;
+        padding: 10px;
+        margin-top: 10px;
+        font-weight: bold;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+    
+    }
+
+    .error--message{
+      
+      z-index: 999;
+      color: red;
+
+    }
+    p {
+      color: green;
+      font-size: 13px;
+      margin-top: 0;
+      z-index: 999;
+    }
+  }
+}
+
 .header--container{
     display: flex;
     justify-content: center;
@@ -907,7 +1006,7 @@
   left:0;
   right:0;
   height: 440px;
-  background-image: url('../components//Images/homePageBackground.jpg');
+  background-image: url('../components//Images/Image (10).jpg');
   background-position: center;
   background-size: cover;
   background-blend-mode: multiply; /* Adjust the blend mode as needed */
@@ -1171,7 +1270,8 @@
       .suggestion--button9,
       .suggestion--button10,
       .suggestion--button11,
-      .suggestion--button12 {
+      .suggestion--button12 ,
+      .suggestion--button13{
         font-size: 15px;
         width: auto;
         height: 30px;
@@ -1202,7 +1302,7 @@
   
   .fade-enter-active {
     opacity: 1;
-    transition: opacity 300ms;
+    transition: opacity 600ms;
   }
   
   .fade-exit {
@@ -1211,6 +1311,6 @@
   
   .fade-exit-active {
     opacity: 0;
-    transition: opacity 300ms;
+    transition: opacity 600ms;
   }
   
