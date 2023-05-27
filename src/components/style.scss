@@ -913,6 +913,7 @@
       @include tablet{
         margin-left: 0;
         padding-top: 20px;
+        
       }
       .discover{
         
@@ -929,8 +930,8 @@
             color: #616161;
             
             font-size: 15px;
-            width:130px;;
-            height: 30px;
+            width:120px;;
+            height: 40px;
 
             
             &:hover{
@@ -951,7 +952,7 @@
           li{
             list-style-type: none;
             color: #616161;
-            width:120px;;
+            width:90px;;
             height: 30px;;
             font-size: 15px;
 
