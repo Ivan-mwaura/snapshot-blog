@@ -1,12 +1,21 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import  {setCustomWidth, setSelectedCustomStyleOption} from '../ReduxStore/store'
+import  {setCustomHeight} from '../ReduxStore/store'
 
 const CustomDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [customValue, setCustomValue] = useState("");
+  //const [selectedOption, setSelectedOption] = useState(null);
+
+  const customStyleSelectedOption = useSelector((state) => state.customStyleSelectedOption);
+  const customWidth = useSelector((state) => state.customWidth);
+  const customHeight = useSelector((state) => state.customHeight);
+  const dispatch = useDispatch();
 
   const options = [
-    { label: 'Size ' },
+    { label: 'You must set the `Orientation` to customize for this to work' },
+    {label:''},
+    {label: 'Set your Dimensions '},
     { label: 'width', value: 'width' },
     { label: 'Height', value: 'height' },
   ];
@@ -16,7 +25,8 @@ const CustomDropdown = () => {
   };
 
   const handleOptionSelect = (option) => {
-    setSelectedOption(option);
+    //setSelectedOption(option);
+    dispatch(setSelectedCustomStyleOption(option))
     if (option && (option.value === 'width' || option.value === 'height')) {
       setIsOpen(true);
     } else {
@@ -24,13 +34,22 @@ const CustomDropdown = () => {
     }
   };
 
-  const handleCustomValueChange = (e) => {
-    setCustomValue(e.target.value);
+  const handleCustomWidthValueChange = (e) => {
+
+    dispatch(setCustomWidth(e.target.value))
+       
   };
+  const handleCustomHeightValueChange = (e) => {
+
+    dispatch(setCustomHeight(e.target.value))
+  
+  
+};
 
   const handleApplyCustomRange = () => {
     // Perform actions specific to custom range selection
-    console.log('Custom range selected:', customValue);
+    
+
     setIsOpen(false);
   };
 
@@ -40,7 +59,7 @@ const CustomDropdown = () => {
         className={`dropdown-toggle ${isOpen ? "open" : ""}`}
         onClick={handleToggleDropdown}
       >
-        {selectedOption ? selectedOption.label : "Select"}
+        {customStyleSelectedOption ? customStyleSelectedOption.label : "Customize Orientation"}
       </div>
       {isOpen && (
         <div className="dropdown-options">
@@ -53,13 +72,26 @@ const CustomDropdown = () => {
               {option.label}
             </div>
           ))}
-          {(selectedOption && (selectedOption.value === "width" || selectedOption.value === "height" )) && (
+          {(customStyleSelectedOption && (customStyleSelectedOption.value === "width" )) && (
             <div className="custom-input">
               <input
                 type="text"
-               placeholder=  {selectedOption.value === 'width' ? "Enter width" : "Enter Height"}
-                value={customValue}
-                onChange={handleCustomValueChange}
+               placeholder=   "Enter width"
+                value={customWidth}
+                onChange={handleCustomWidthValueChange}
+              />
+            
+              <button onClick={handleApplyCustomRange}>Apply</button>
+            </div>
+          )}
+          {(customStyleSelectedOption && (customStyleSelectedOption.value === "height" )) && (
+            <div className="custom-input">
+           
+                <input
+                type="text"
+               placeholder=  "Enter Height"
+                value={customHeight}
+                onChange={handleCustomHeightValueChange}
               />
               <button onClick={handleApplyCustomRange}>Apply</button>
             </div>

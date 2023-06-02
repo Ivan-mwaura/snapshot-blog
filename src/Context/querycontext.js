@@ -3,6 +3,7 @@ import { createContext } from "react";
 import Header from "../components/Gallerycomponents/header";
 import Body from "../components/Gallerycomponents/body";
 
+
 //import Footer from "../components/footer";
 //import Gallery from "../components/Gallery";
 
@@ -17,16 +18,25 @@ const Querycontext = () => {
   const [hits, setHits] = useState(0);
   const[selectedOption, setselectOption] = useState()
   const[page, setPage] = useState(1)
- /*const [feedback, setFeedback] = useState(false); */
+  const [showCollection, setShowCollection] = useState(false);
+
 
   return (
     <AppContext.Provider
-      value={{ query, setQuery, data, setData, hits, setHits, selectedOption,setselectOption,page, setPage}}
+      value={{ query, setQuery,
+         data, setData,
+          hits, setHits,
+           selectedOption,setselectOption,
+           page, setPage,
+           showCollection, setShowCollection,
+          
+          
+          }}
     >
 
      <Header />
       <Body />
-    
+   
     </AppContext.Provider>
   );
 };

@@ -11,7 +11,11 @@ const initialState = {
   dataType:'',
   query:{
     searchQuery: ''
-  }
+  },
+  customStyleSelectedOption:null,
+  customWidth:'',
+  customHeight:''
+
   // Add any other initial state properties here
 };
 
@@ -72,6 +76,25 @@ export const setDataType= (option) => {
   }
 }
 
+export const setCustomWidth =(option) => {
+  return {
+    type: 'SET_CUSTOM_WIDTH',
+    payload:option
+  }
+}
+export const setCustomHeight =(option) => {
+  return {
+    type: 'SET_CUSTOM_HEIGHT',
+    payload:option
+  }
+}
+
+export const setSelectedCustomStyleOption =(option) => {
+  return {
+    type: 'SET_SELECTED_CUSTOM_OPTION',
+    payload:option
+  }
+}
 
 
 //define your Reducers
@@ -152,6 +175,34 @@ const dataTypeReducer = (state = initialState.dataType,  action) =>{
   }
 }
 
+const customWidthReducer = (state = initialState.customWidth, action) => {
+  switch(action.type){
+    case 'SET_CUSTOM_WIDTH':
+      return action.payload
+      default:
+      return state
+  }
+}
+const customHeightReducer = (state = initialState.customHeight, action) => {
+  switch(action.type){
+    case 'SET_CUSTOM_HEIGHT':
+      return action.payload
+      default:
+      return state
+  }
+}
+
+const customStyleSelectedOptionReducer = (state = initialState.customStyleSelectedOption, action) => {
+  switch(action.type){
+    case 'SET_SELECTED_CUSTOM_OPTION':
+      return action.payload
+      default:
+      return state
+  }
+}
+
+
+
 // Combine all reducers
 const rootReducer = combineReducers({
 
@@ -162,7 +213,10 @@ const rootReducer = combineReducers({
   publishDate: publishDateReducer,
   query: queryReducer,
   galleryData: galleryDataReducer,
-  dataType: dataTypeReducer
+  dataType: dataTypeReducer,
+  customWidth: customWidthReducer,
+  customHeight: customHeightReducer,
+  customStyleSelectedOption: customStyleSelectedOptionReducer
   // Add any other reducers here
 });
 

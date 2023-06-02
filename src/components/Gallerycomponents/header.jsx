@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import {  useDispatch } from "react-redux";
-import { Bell, Justify, Upload } from "react-bootstrap-icons";
+import { Bell, Discord, Facebook, Instagram, Justify, Pinterest, Twitter, Upload } from "react-bootstrap-icons";
 import logo from "../Images/logo_1.jpg";
-import Explore from "../../SelectInputs/Explore";
+import { faBrush, faCamera, faFileAudio, faFileVideo, faMusic, faVectorSquare, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { setQuery } from "../../ReduxStore/store";
 import "../style.scss";
 import {  useNavigate } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 const Header = () => {
+
+  const[showExplorer, setShowExplorer] = useState(false)
   
   const dispatch = useDispatch();
 
@@ -38,6 +42,10 @@ const Header = () => {
     navigate('/')
   }
 
+  function handleExplorer(){
+    setShowExplorer((prevState) => !prevState)
+  }
+
   return (
     <div className="header--container">
       <nav className="header--content">
@@ -56,15 +64,82 @@ const Header = () => {
           </form>
         </span>
 
-        <div className="explore">
-          <Explore />
+        <div className="explorer">
+          <button className="explore--button"
+            onClick={handleExplorer}
+            
+          >
+            Explore
+          </button>
         </div>
+      {showExplorer &&  <div className="explorer--menu">
+        <div className="list--div">
+          <div className="list1">
+              <ul><label>Media</label><br/>
+                <li><FontAwesomeIcon icon={faCamera}/> &nbsp; &nbsp; Photos</li>
+                <li> <FontAwesomeIcon icon={faBrush}/>&nbsp; &nbsp;  Illustrations</li>
+                <li><FontAwesomeIcon icon={faVectorSquare}/> &nbsp; &nbsp; vectors</li>
+                <li><FontAwesomeIcon icon={faVideo}/>&nbsp; &nbsp;  Videos</li>
+                <li> <FontAwesomeIcon icon={faMusic}/> &nbsp; &nbsp; Music</li>
+                <li> <FontAwesomeIcon icon={faFileAudio}/>&nbsp; &nbsp;  sound Effects</li>
+                <li><FontAwesomeIcon icon={faFileVideo}/>&nbsp; &nbsp;  Gifs</li>
+              </ul>
+            
+            </div>
+
+            <div className="list2">
+              <ul><label>Discover</label><br/>
+                <li>Editors Choice</li>
+                <li>curated Collections</li>
+                <li>popular Images</li>
+                <li>Popular videos</li>
+                <li>Popular Music</li>
+                <li>Popular searches</li>
+              </ul>             
+            </div>
+
+            <div className="list3">
+              <ul><label>Community</label><br/>
+                <li>Creators</li>
+                <li>Forum</li>
+                <li>Blog</li>
+                <li>Cameras</li>
+              
+              </ul>
+            </div>
+
+            <div className="list4">
+              <ul><label>About</label><br/>
+                <li>About us</li>
+                <li>FAQ</li>
+                <li>License Summary</li>
+                <li>Terms of Service</li>
+                <li>Privacy Policy</li>
+                <li>cookies Policy</li>
+                <li>API</li>
+                <li>Language</li>
+              </ul>
+
+            </div>
+          </div>
+           <div className="social--media">
+            <div>
+                <Instagram style={{color:'white'}}/> &nbsp;&nbsp; &nbsp;
+                <Twitter style={{color:'white'}}/>&nbsp;&nbsp;&nbsp;
+                <Discord style={{color:'white'}}/>&nbsp;&nbsp;
+                <Pinterest style={{color:'white'}}/>&nbsp;&nbsp;&nbsp;
+                <Facebook style={{color:'white'}}/>&nbsp;&nbsp;&nbsp;
+            </div>
+               
+           </div>
+
+        </div>}
 
         <span className="notification">
           <Bell size={20} />
         </span>
 
-        <Justify size={60} className="justify--icon" color="black" />
+        <Justify size={40} className="justify--icon" color="black" />
 
         <span className="profile"></span>
 

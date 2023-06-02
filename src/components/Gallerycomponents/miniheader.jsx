@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Question, Sliders,  } from "react-bootstrap-icons";
 import Switch from 'react-switch';
 import AllImages from "../../SelectInputs/AllImages"
@@ -13,14 +13,21 @@ import '../style.scss'
 
 const MiniHeader = () =>{
 
-    
+    const[safeSearchTrue, setSafeSearchTrue] = useState(false);
 
-    const safeSearch = useSelector((state) => state.safeSearch)
-    const dispatch = useDispatch()
+    const safeSearch = useSelector((state) => state.safeSearch);
+    const dispatch = useDispatch();
     
 
     function handleChecked (safeSearch){
-        dispatch(setSafeSearch(safeSearch))
+        dispatch(setSafeSearch(safeSearch));
+        if(safeSearch === true){
+            setSafeSearchTrue(true)
+        }
+        else{
+            setSafeSearchTrue(false)
+        }
+       
     }
 
     return (
@@ -52,9 +59,10 @@ const MiniHeader = () =>{
                 <Switch
                     checked={safeSearch}
                     onChange={handleChecked}
-                    size={100}
+                    className="react--switch"
                 />&nbsp;&nbsp;
-            </span> <span className ="switch--mode">Safe search</span>
+                {safeSearchTrue ? <p className="safesearch--on" >safeSearch is turned on</p> : <p className="safesearch--off" >safeSearch is turned off</p>}
+                </span> <span className ="switch--mode">Safe search</span>
            
 
             <span className="question">

@@ -50,6 +50,7 @@ const Body = () => {
           setData(response.hits);
           setHits(response.total);
           setTotalPages(Math.ceil(response.total / 50)); // Calculate total pages based on total hits
+          window.scrollTo({top:0, behavior:"smooth"})// Scroll to the top of the page
         })
         .catch((error) => {
           console.error("Error fetching images:", error);
@@ -95,6 +96,8 @@ const Body = () => {
         webformatURL={dt.webformatURL}
         userProfile={dt.userImageURL}
         user={dt.user}
+        likes = {dt.likes
+        }
       />
     );
   });

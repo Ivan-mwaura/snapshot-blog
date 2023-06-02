@@ -11,9 +11,10 @@ const Orientation = () => {
 
 
   const options = [
-    { value: 'any', label: 'Any' },
+    
     { value: 'horizontal', label: 'horizontal' },
     { value: 'vertical', label: 'vertical' },
+    { value: 'any', label: 'customize ' }
   ];
 
   const customStyles = {
