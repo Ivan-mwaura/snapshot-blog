@@ -78,6 +78,10 @@ try {
             <h1 className='snapshot--name'>SnapShot</h1>
             
         </span>
+        
+
+        <div className='navbar-top-left-items'>
+            
         <div className="explorer">
           <button className="explore--button"
             onClick={handleExplorer}
@@ -148,8 +152,6 @@ try {
            </div>
       </div>}
 
-        <div className='navbar-top-left-items'>
-            
              
 
         <span className="notification">
