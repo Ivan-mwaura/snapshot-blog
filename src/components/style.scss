@@ -1083,7 +1083,8 @@
     width: 585px;
 
     @include tablet{
-        width: 450px;
+        width: 420px;
+        padding-left: 5px;
     }
 
     h1{
@@ -1099,7 +1100,7 @@
       width: 540px;
 
       @include tablet{
-        width: 400px;
+        width: 390px;
       }
 
       display: flex;
@@ -1137,7 +1138,7 @@
       border-radius: 4px;
 
       @include tablet{
-        width: 400px;
+        width: 390px;
       }
       
     }     
@@ -1151,7 +1152,7 @@
         border-radius: 4px ;
 
         @include tablet{
-          width: 400px;
+          width: 390px;
         }
 
         h1{
@@ -1178,7 +1179,7 @@
           @include tablet{
             margin-left: 0px;
             margin-right: 3px;
-            width: 120px;
+            width: 130px;
           }
 
           p{
