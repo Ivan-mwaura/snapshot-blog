@@ -18,6 +18,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [favourite, setFavourite] = useState(false);
   const [collections, setCollections] = useState([]);
+  const[width, setWidth]= useState();
 
 
 
@@ -53,12 +54,35 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) {
     };
   }
 
+  useEffect(()=>{
+    
+
+    function handleWidth(){
+      
+      
+      setWidth(window.innerWidth)
+    }
+    
+    window.addEventListener('resize', handleWidth)
+    
+
+    return()=>{
+      window.removeEventListener('resize', handleWidth)
+    }
+
+  })
+console.log(width)
+  
+
   useEffect(() => {
+    
     const image = new Image();
     image.src = webformatURL;
     image.onload = () => {
       setImageLoaded(true);
     };
+
+
   }, [webformatURL]);
 
   function handleMouseEnter() {
@@ -211,7 +235,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) {
               </p>
             )}
           </div>
-        )}
+        ) } 
         {hovered && (
           <div className={`favourites-icon-div ${hovered ? "hovered" : ""}`}>
             {favourite ? (
