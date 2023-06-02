@@ -312,7 +312,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) {
 
             {collections.map((collection) => (
               <div key={collection.id} className="collections">
-                <h1>{collection.name} <span>-({collection.images.length} image(s))</span></h1>
+                <h1>{collection.name} <span>-({collection.images.length} image(s) added)</span></h1>
                 <button className="add-to-collection" onClick={() => addToCollection(selectedImage, collection.name)}>
                     <p>Add Image <FontAwesomeIcon icon={faThumbsUp} color="green"/></p>  
                 </button>
