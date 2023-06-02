@@ -90,7 +90,7 @@ try {
             Explore
           </button>
         </div>
-      {showExplorer &&  <div className="explorer--menu">
+      {showExplorer &&  <div className="explorerhomepage--menu">
         <div className="list--div">
           <div className="list1">
               <ul><label>Media</label><br/>
