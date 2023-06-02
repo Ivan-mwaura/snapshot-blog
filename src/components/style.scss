@@ -1079,12 +1079,14 @@
     padding-left: 20px;
     border-radius: 6px;
     padding-top: 20px;
-    overflow: scroll;
+    overflow:scroll;
     width: 585px;
 
     @include tablet{
-        width: 420px;
-        padding-left: 5px;
+        width: 400px;
+        padding-left: 10px;
+        padding-right: 2px;
+        margin-right: 0;
     }
 
     h1{
@@ -1100,7 +1102,7 @@
       width: 540px;
 
       @include tablet{
-        width: 390px;
+        width: 370px;
       }
 
       display: flex;
@@ -1138,7 +1140,7 @@
       border-radius: 4px;
 
       @include tablet{
-        width: 390px;
+        width: 370px;
       }
       
     }     
@@ -1152,7 +1154,7 @@
         border-radius: 4px ;
 
         @include tablet{
-          width: 390px;
+          width: 370px;
         }
 
         h1{
@@ -1179,7 +1181,7 @@
           @include tablet{
             margin-left: 0px;
             margin-right: 3px;
-            width: 130px;
+            width: 140px;
           }
 
           p{
