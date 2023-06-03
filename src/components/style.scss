@@ -430,7 +430,7 @@
           width: 100%;
           background-color:#051c33;
           border-radius:5px;
-          height: 1000px;
+          height: 1300px;
           z-index: 999;
           animation: slide-down 1s forwards;
           display: flex;
@@ -439,6 +439,11 @@
           padding-top: 20px;
           padding-left: 20px;
           padding-right: 20px;
+
+
+          @include tablet{
+            padding-right: 30px;
+          }
           
           
 
@@ -469,7 +474,9 @@
                     border:1px solid green;
                   }
 
-                  
+                  @include tablet{
+                    margin-right: 40px;
+                  }
 
                 
               }
