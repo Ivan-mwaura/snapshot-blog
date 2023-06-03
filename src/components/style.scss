@@ -139,9 +139,7 @@
     background-color: gray;
     width: 100%;
     
-    @include mobile{
-      margin-left: 5px;
-    }
+  
       
 
     body {
@@ -167,7 +165,7 @@
         background-color: white;
         width: 100%;
         box-shadow: 2px 0px 2px 2px rgb(241, 235, 235);
-        
+       
        
       .logo--title{
         width: 100px;
@@ -426,13 +424,13 @@
 
 
          .slide-container {
-          position: absolute;
-          top: -100%;
+          position: absolute;    
+          right: 0;
           left: 0;
           width: 100%;
           background-color:#051c33;
           border-radius:5px;
-          height: 800px;
+          height: 1000px;
           z-index: 999;
           animation: slide-down 1s forwards;
           display: flex;
@@ -441,7 +439,7 @@
           padding-top: 20px;
           padding-left: 20px;
           padding-right: 20px;
-          margin:0;
+          
           
 
             .title--bar{
@@ -497,12 +495,11 @@
           }
 
           @include tecno{
-            width: 100px;
+            width: 350px;         
             
         }
         @include mobile(){
           width: 475px;
-          padding-right: 20px;
       }
 
         
@@ -2036,7 +2033,7 @@
 .custom-dropdown {
   position: relative;
  width: 100%;
- margin: 0;
+
 }
 
 .dropdown-toggle {
