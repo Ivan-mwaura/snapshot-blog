@@ -226,6 +226,10 @@
 
 
        }
+
+     
+      
+
        
        .explorer{
         margin-left: 10px;
@@ -410,6 +414,74 @@
         }
         
        }
+
+
+
+         //STYLES FOT THER  THE HOMEPAGE COLLAPSIBLE BUTTON WITH HOMEPAGE ITEMS
+
+
+         .slide-container {
+          position: absolute;
+          top: -100%;
+          left: 0;
+          width: 100%;
+          background-color:#051c33;
+          border-radius:5px;
+          height: calc(800px );
+          z-index: 999;
+          animation: slide-down 1s forwards;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          padding-top: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+          
+
+            .title--bar{
+              display: flex;
+              flex-direction: row;
+              padding-bottom: 13px;
+              border-bottom: 1px solid #ccc;
+            
+
+              .logo{
+                width: 150px;
+                height: 50px;
+              }
+
+                .collapse--mininavbar{
+                  position: absolute;
+                  right: 0;
+                  margin-right: 20px;
+                  padding: 1px;
+                  border: 1px solid rgb(158, 151, 151);
+                  border-radius: 30%;
+
+                  &:hover{
+                    background-color: green;
+                    border:1px solid green;
+                  }
+  
+                
+              }
+
+             
+            }
+       
+        
+          @keyframes slide-down {
+            0% {
+              top: -100%;
+            }
+            100% {
+              top: 10%;
+            }
+          }
+
+        
+        }
+
 
        
        .notification{
@@ -793,6 +865,7 @@
 
       .btn{
         width: fit-content;
+        height: fit-content;
       
         border: 1px solid rgb(235, 231, 231);
         &:hover{
@@ -1931,4 +2004,67 @@
     transition: opacity 2s;
     background-color:transparent;
   }
+
+  //STYLES FOR THE CUSTOM SELECT INPUTS
+/*1.MEDIA INPUT STYLES*/
+.custom-dropdown {
+  position: relative;
+ width: 100%;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  
+  border: 1px solid white;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  border: none;
+
+  &:hover{
+    background-color: #ccc;
+  }
+}
+
+.dropdown-toggle.open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-left:20px;
+  border-radius: 5px;
+  width: 450px;
+  background-color:#051c33;
+  color: white;
+  font-style:bold;
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  
+  background-color:#051c33;
+}
+
+.option {
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &.selected {
+    background-color: #ccc;
+  }
+}
+
+  
   

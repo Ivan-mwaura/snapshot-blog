@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import {  useDispatch } from "react-redux";
-import { Bell, Discord, Facebook, Instagram, Justify, Pinterest, Twitter, Upload } from "react-bootstrap-icons";
+import { Bell, Discord, Facebook, Instagram, Justify, Pinterest, Twitter, Upload, X } from "react-bootstrap-icons";
 import logo from "../Images/logo_1.jpg";
 import { faBrush, faCamera, faFileAudio, faFileVideo, faMusic, faVectorSquare, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { setQuery } from "../../ReduxStore/store";
 import "../style.scss";
 import {  useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Media from "../../CustomSelectInputs/media";
+import Discover from "../../CustomSelectInputs/discover";
+import Community from "../../CustomSelectInputs/community";
+import About from "../../CustomSelectInputs/about";
 
 
 const Header = () => {
 
   const[showExplorer, setShowExplorer] = useState(false)
-  
-  const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
 
- const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
  /* function handleChange(event) {
     event.preventDefault();
@@ -44,6 +48,14 @@ const Header = () => {
 
   function handleExplorer(){
     setShowExplorer((prevState) => !prevState)
+  }
+
+  const handleJustifyClick = () => {
+    setIsOpen(!isOpen);
+  };
+  
+  const handleCollapse= ()=>{
+    setIsOpen((prev) => !prev)
   }
 
   return (
@@ -139,9 +151,49 @@ const Header = () => {
           <Bell size={20} />
         </span>
 
-        <Justify size={40} className="justify--icon" color="black" />
+        {/*<Justify size={40}  color="black" className={`toggle-button ${isOpen ? 'open' : ''}`} onClick={toggleMenu} />*/}
 
         <span className="profile"></span>
+
+        {/*for mobile devices, custom collapsible menu*/}
+
+        <div>
+      <Justify size={40}
+       color="black" 
+       onClick={handleJustifyClick} 
+       className="justify--icon"
+       
+       />
+
+      {isOpen && (
+        <div className="slide-container">
+          <div className="title--bar">
+            <img src={logo} alt="" className="logo"/>
+          
+              <X color="white"            
+                size={30} 
+                className="collapse--mininavbar"
+                onClick={handleCollapse}
+             />                     
+            </div>  
+
+            <div>
+              <Media/>
+            </div>    
+            <div>
+              <Discover/>
+            </div>   
+            <div>
+              <Community/>
+            </div>  
+            <div>
+              <About/>
+            </div> 
+     
+
+        </div>
+      )}
+    </div>
 
         <span className="upload">
           <button className="upload--button">
