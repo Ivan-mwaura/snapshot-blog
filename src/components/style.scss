@@ -425,7 +425,7 @@
 
          .slide-container {
           position: absolute;    
-          right: 0;
+          
           left: 0;
           width: 100%;
           background-color:#051c33;
@@ -441,11 +441,15 @@
           padding-right: 20px;
 
 
-          @include tablet{
-            padding-right: 30px;
-          }
-          
-          
+      
+          @include mobile{
+            width: 475px;
+        }
+
+        @include tecno{
+          width: 450px;
+          padding-right: 40px;
+        }
 
             .title--bar{
               display: flex;
@@ -474,10 +478,7 @@
                     border:1px solid green;
                   }
 
-                  @include tablet{
-                    margin-right: 40px;
-                  }
-
+                
                 
               }
 
@@ -500,14 +501,6 @@
              
             }
           }
-
-          @include tecno{
-            width: 250px;         
-            
-        }
-        @include mobile{
-          width: 475px;
-      }
 
         
         }
