@@ -25,7 +25,7 @@
   }
 }
 @mixin tecno{
-  @media screen and (max-width : 350px){
+  @media screen and (max-width : 500px){
     @content
   }
 }
@@ -497,8 +497,8 @@
           }
 
           @include tecno{
-            width: 300px;
-            padding-right: 0px;
+            width: 200px;
+            
         }
         @include mobile(){
           width: 475px;
