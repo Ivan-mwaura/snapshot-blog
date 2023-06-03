@@ -24,6 +24,11 @@
       @content;
   }
 }
+@mixin tecno{
+  @media screen and (max-width : 400px){
+    @content
+  }
+}
 
 
 .formContainer {
@@ -481,8 +486,8 @@
             }
           }
 
-          @include mobile{
-            width: 450px;
+          @include tecno{
+            width: 400px;
         }
 
         
