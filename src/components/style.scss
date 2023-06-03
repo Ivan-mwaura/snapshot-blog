@@ -441,16 +441,6 @@
           padding-right: 20px;
 
 
-      
-          @include mobile{
-            width: 475px;
-        }
-
-        @include tecno{
-          width: 450px;
-          padding-right: 40px;
-        }
-
             .title--bar{
               display: flex;
               flex-direction: row;
@@ -486,14 +476,7 @@
                 
               }
 
-              .collapsible-mininavbar-icons{
-                @include tecno{
-                  margin-top: 120px;
-                }
-              }
-
-             
-            }
+            
        
         
           @keyframes slide-down {
@@ -505,6 +488,15 @@
              
             }
           }
+
+          .collapsible-mininavbar-icons{
+            @include tecno{
+              margin-top: 120px;
+            }
+          }
+
+         
+        }
 
         
         }

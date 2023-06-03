@@ -190,7 +190,7 @@ const Header = () => {
               <About/>
             </div> 
 
-            <div style={{marginTop:'70px', display:'flex', gap:'30px',justifyContent:'center'}} className="collapsible-mininavbar-icons">
+            <div style={{marginTop:'100px', display:'flex', gap:'30px',justifyContent:'center'}} className="collapsible-mininavbar-icons">
               <span style={{color:'white', fontSize:'10px'}}>
                   <Instagram style={{color:'white'}} size={30}/> <br/>instagram
               </span>
