@@ -502,10 +502,10 @@
           }
 
           @include tecno{
-            width: 350px;         
+            width: 250px;         
             
         }
-        @include mobile(){
+        @include mobile{
           width: 475px;
       }
 
@@ -2041,6 +2041,7 @@
   position: relative;
  width: 100%;
 
+ 
 }
 
 .dropdown-toggle {
