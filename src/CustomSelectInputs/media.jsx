@@ -41,6 +41,7 @@ const Media = () => {
       <div
         className={`dropdown-toggle ${isOpen ? "open" : ""}`}
         onClick={handleToggleDropdown}
+        
       >
         {selectedOption ? selectedOption.label : "Media"}
       </div>

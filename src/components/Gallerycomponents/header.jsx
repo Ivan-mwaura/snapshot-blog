@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {  useDispatch } from "react-redux";
 import { Bell, Discord, Facebook, Instagram, Justify, Pinterest, Twitter, Upload, X } from "react-bootstrap-icons";
 import logo from "../Images/logo_1.jpg";
+import logo2 from "../Images/snapshot--logo3.png"
 import { faBrush, faCamera, faFileAudio, faFileVideo, faMusic, faVectorSquare, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { setQuery } from "../../ReduxStore/store";
 import "../style.scss";
@@ -11,7 +12,6 @@ import Media from "../../CustomSelectInputs/media";
 import Discover from "../../CustomSelectInputs/discover";
 import Community from "../../CustomSelectInputs/community";
 import About from "../../CustomSelectInputs/about";
-
 
 const Header = () => {
 
@@ -168,7 +168,7 @@ const Header = () => {
       {isOpen && (
         <div className="slide-container">
           <div className="title--bar">
-            <img src={logo} alt="" className="logo"/>
+            <img src={logo2} alt="" className="logo"/>
           
               <X color="white"            
                 size={30} 
@@ -189,7 +189,25 @@ const Header = () => {
             <div>
               <About/>
             </div> 
-     
+
+            <div style={{marginTop:'70px', display:'flex', gap:'30px',justifyContent:'center'}}>
+              <span style={{color:'white', fontSize:'10px'}}>
+                  <Instagram style={{color:'white'}} size={30}/> <br/>instagram
+              </span>
+              <span style={{color:'white', fontSize:'10px'}}>
+                  <Twitter style={{color:'white'}} size={30}/> <br/>twitter
+              </span>
+              <span style={{color:'white', fontSize:'10px'}}>
+                  <Discord style={{color:'white'}} size={30}/> <br/>discord
+              </span>
+              <span style={{color:'white', fontSize:'10px'}}>
+                  <Pinterest style={{color:'white'}} size={30}/> <br/>pinterest
+              </span>
+              <span style={{color:'white', fontSize:'10px'}}>
+                  <Facebook style={{color:'white'}} size={30}/> <br/>facebook
+              </span>
+               
+            </div>
 
         </div>
       )}
