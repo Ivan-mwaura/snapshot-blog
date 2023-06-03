@@ -7,7 +7,7 @@ const Discover = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const options = [
-    { value: 'editors choice', label: 'Edtors choice' },
+    { value: 'editors choice', label: 'Editors choice' },
     { value: 'curated collections', label: 'Curated Collections' },
     { value: 'popular images', label: 'Popular Images' },
     { value: 'popular videos', label: 'Popular videos' },

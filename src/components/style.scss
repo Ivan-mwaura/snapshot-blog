@@ -449,14 +449,15 @@
               flex-direction: row;
               padding-bottom: 13px;
               border-bottom: 1px solid #ccc;
-            
+
+             
 
               .logo{
                 width: 150px;
                 height: 50px;
               }
 
-                .collapse--mininavbar{
+                .collapse-x-icon{
                   position: absolute;
                   right: 0;
                   margin-right: 20px;
@@ -469,8 +470,16 @@
                     background-color: green;
                     border:1px solid green;
                   }
-  
+
+                  
+
                 
+              }
+
+              .collapse--mininavbar-icons{
+                @include tecno{
+                  margin-top: 100px;
+                }
               }
 
              

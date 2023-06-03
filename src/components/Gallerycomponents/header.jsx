@@ -172,15 +172,15 @@ const Header = () => {
           
               <X color="white"            
                 size={30} 
-                className="collapse--mininavbar"
+                className="collapse-x-icon"
                 onClick={handleCollapse}
              />                     
             </div>  
 
-            <div>
+            <div style={{marginTop:'30px'}}>
               <Media/>
             </div>    
-            <div>
+            <div >
               <Discover/>
             </div>   
             <div>
@@ -190,7 +190,7 @@ const Header = () => {
               <About/>
             </div> 
 
-            <div style={{marginTop:'70px', display:'flex', gap:'30px',justifyContent:'center'}}>
+            <div style={{marginTop:'70px', display:'flex', gap:'30px',justifyContent:'center'}} className="collapsible-mininavbar-icons">
               <span style={{color:'white', fontSize:'10px'}}>
                   <Instagram style={{color:'white'}} size={30}/> <br/>instagram
               </span>
