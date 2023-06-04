@@ -1,3 +1,6 @@
+
+//media querries for diffrent screen sizes
+
 @mixin laptop {
     @media screen and (max-width : 1600px) {
         @content;
@@ -29,9 +32,9 @@
     @content
   }
 }
-
-
-.formContainer {
+        
+    
+.formContainer {           
   height: 100vh;
   display: flex;
   align-items: center;
@@ -39,7 +42,7 @@
   background-image:  url('../components//Images/gradient-7258997_1920.png');
   background-repeat: no-repeat();
 
-  
+
 
   .formWrapper {
     background-color: white ;
@@ -132,6 +135,8 @@
     }
   }
 }
+
+    //STYLING FOR THE HEADER.JSX COMPONENT
 
 .header--container{
     display: flex;
@@ -420,7 +425,7 @@
 
 
 
-         //STYLES FOT THER  THE HOMEPAGE COLLAPSIBLE BUTTON WITH HOMEPAGE ITEMS
+   //STYLES FOT THER  THE HOMEPAGE COLLAPSIBLE BUTTON WITH HOMEPAGE ITEMS
 
 
          .slide-container {
@@ -565,6 +570,9 @@
     }
     }
 }
+
+  //STYLING FOR THE BODY.JSX COMPONENT (nests miniheader and seconder components)
+
 .mapped--container{
   flex: 1;
   display: flex;
@@ -581,7 +589,7 @@
   width: 100%;
 }
 
-//styles for the MINIHEADER GALLERY COMPONENT
+  //styles for the MINIHEADER GALLERY COMPONENT
 
 .mini-header-container{
    display: flex;
@@ -846,6 +854,8 @@
    
   }
 
+    //STYLING FOR THE SECOND HEADER COMPONENT
+
   .second-header-container{
     padding-top: 20px;
    padding-left: 15px;
@@ -903,11 +913,13 @@
   
   }
 
+
+  /*continuation of the body.jsx styling.. up there were styles for the nested miniheader 
+  and second container components*/
+
+  //hint apidata
     .mapped--div{
-        //display: grid;
-        //grid-template-columns: auto auto auto auto auto;   
-       // gap: 10px;
-        
+            
        position: relative;
         z-index: 0;
         
@@ -929,14 +941,12 @@
           @include pad{
             column-count: 4; 
             column-gap: 10px;     
-          }
-        
-       
+          }     
         
     }
   }
 
-
+  //STYLING FOR THE GALLERY COMPONENT
 .gallery--div {
     border-radius: 4px;
     overflow: hidden;
@@ -1151,7 +1161,7 @@
     opacity: 1; /* Set opacity to 1 to show the image */
   }
 
-//collections styles
+//STYLING FOR THE COLLECTIONS (IMAGE COLLECTIONS)
 
 .collections--container{
 
@@ -1302,7 +1312,7 @@
   }
 
 }
-  //next page button
+  //STYLING FOR THE NEXT PAGE AND PREV PAGE BUTTONS
 
   .navigation-buttons {
     padding-top: 30px;
@@ -1326,7 +1336,8 @@
     /* Add your styling for the Next page button */
   }
 
-  //footer
+  //STYLING FOR THE FOOTER COMPONENT
+
   .footer--container{
     position: relative;
     z-index: 1;
@@ -1469,7 +1480,11 @@
 
 
 
-//STYLING FOR THE HOME PAGE
+//STYLING FOR THE HOME PAGE COMPONENT(nests others)
+
+//1. STYLING FOR THE HOMEPAGE NAVBAR COMPONENT
+
+//**NOTE** homepagegallery and homepagegallerybody components were implemented on **code reuse** for their styles were shared too
 
 .navbar--container{
   position: relative;
@@ -1504,24 +1519,19 @@
                 color: white;
                 font-size: bold;
                 font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                
-                
+                                
               }
             }
 
             
-            
-
             .navbar-top-left-items{
               
               display: flex;
               flex-direction: row;
               margin-left: 0;
+             
 
-          
-              
-
-              .explorer{
+             .explorer{
                 margin-left: 0px;
                 margin-right: 30px;
                 margin-top: 10px;
@@ -1779,7 +1789,7 @@
                 @include tablet {
                   margin-right: 1px;
                 }
-
+                
                 &:hover{
                   background-color: #ccc;
                 }
@@ -1917,6 +1927,8 @@
   
 }
 
+  //STYLES FOT THE HOMEPAGE MINIHEADER COMPONENT
+
 .mini--header {
   display: flex;
   padding-top: 10px;
@@ -2015,7 +2027,8 @@
   }
 
 
-    
+   //STYLES FOR THE CSS TRANSITIONS(ROUTING) 
+
   .fade-enter {
     opacity: 0;
     background-color:transparent;
@@ -2181,6 +2194,7 @@
   
 
 //STYLING FOR FILTER SECTION SELECT INPUTS(media and Orientation Formats)
+
 .custom-select {
   position: relative;
   width: 100%px;
@@ -2361,6 +2375,14 @@
   }
 }
 
+//loading stateplaceholder
+
+
+.loading--placeholder{
+  display: flex;
+  justify-content: center;
+  
+}
 
 
 

@@ -8,7 +8,10 @@ import { Plus } from "react-bootstrap-icons";
 import { AppContext } from "../../Context/querycontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Gallery({ webformatURL, user, userProfile, tags, likes,  }) {
+function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props passed
+
+  //states section
+
   const [hovered, setHover] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [like, setLike] = useState(false);
@@ -18,24 +21,21 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [favourite, setFavourite] = useState(false);
   const [collections, setCollections] = useState([]);
-  const[width, setWidth]= useState();
 
-
-
+  // Redux and contextAPI  section
   const{showCollection, setShowCollection} = useContext(AppContext)
-
   const selectedOption = useSelector((state) => state.selectedOption);
   const customWidth = useSelector((state) => state.customWidth);
   const customHeight = useSelector((state) => state.customHeight);
 
   
-  let galleryStyles;
+  let galleryStyles;//orientation format determination
 
   if (selectedOption && selectedOption.value === "horizontal") {
-    galleryStyles = {
-      width: "315px",
-      height:"270px"
-    };
+      galleryStyles = {
+        width: "315px",
+        height:"270px"
+      };
   } else if (selectedOption && selectedOption.value === "vertical") {
     galleryStyles = {
       width: "100%",
@@ -54,26 +54,9 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) {
     };
   }
 
-  useEffect(()=>{
-    
 
-    function handleWidth(){
-      
-      
-      setWidth(window.innerWidth)
-    }
-    
-    window.addEventListener('resize', handleWidth)
-    
-
-    return()=>{
-      window.removeEventListener('resize', handleWidth)
-    }
-
-  })
-console.log(width)
   
-
+  //determination if the image is loaded
   useEffect(() => {
     
     const image = new Image();
@@ -85,6 +68,7 @@ console.log(width)
 
   }, [webformatURL]);
 
+//functions to handle various events
   function handleMouseEnter() {
     setHover(true);
     setLikeHovered(false);
@@ -100,13 +84,13 @@ console.log(width)
   }
 
   function handledownload() {
-    console.log("click download");
     // Download logic
-    const fileName = "Image.jpg";
+    const fileName = prompt("save image as : ");
     const fileURL = webformatURL;
     saveAs(fileURL, fileName);
   }
 
+  //likecount logic function
   function handleLikeCount() {
     setLike((prevLike) => !prevLike);
     if(like === false){
@@ -148,7 +132,7 @@ console.log(width)
     const collectionName = prompt("Enter collection Name : ")
 
     if(collectionName){
-      const newCollection = {
+      const newCollection = {             //creating a new collection
         name: collectionName,
         id:Date.now(),
         images:[]
@@ -159,15 +143,15 @@ console.log(width)
 
     function addToCollection(ImageSelected, collectionName){
       const collectionIndex = collections.findIndex(
-        (Collection) => Collection.name === collectionName
-        
-     
-        )
+
+        (Collection) => Collection.name === collectionName   
+
+        );
     
     if(collectionIndex !== -1){
 
       const updatedCollections = [...collections];
-      updatedCollections[collectionIndex].images.push({url:ImageSelected})
+      updatedCollections[collectionIndex].images.push({url:ImageSelected})       //adding the image selected to the collection
       setCollections(updatedCollections);
     }
   
@@ -191,7 +175,7 @@ console.log(width)
   return (
     <>
       <div
-        className={`gallery--div ${hovered ? "hovered" : ""}`}
+        className={`gallery--div ${hovered ? "hovered" : ""}`} //main gallery container
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={galleryStyles}       
@@ -204,7 +188,7 @@ console.log(width)
               color="black"
               size={35}
               style={{
-                backgroundColor: "#ddd",
+                backgroundColor: "#ddd",            //download icon (downloading)
                 padding: "5px",
                 borderRadius: "5px",
               }}
@@ -212,11 +196,12 @@ console.log(width)
             />
           </div>
         )}
+
         {hovered && (
           <div className="hearticon--div">
             <Heart
               className="heart--icon"
-              color={like ? "red" : "white"}
+              color={like ? "red" : "white"}                    //heart icon (likes)
               fontSize="bold"
               size={35}
               style={{
@@ -236,12 +221,15 @@ console.log(width)
             )}
           </div>
         ) } 
+
         {hovered && (
           <div className={`favourites-icon-div ${hovered ? "hovered" : ""}`}>
+
             {favourite ? (
+
               <BookmarkCheck
                 className="favourites--icon"
-                color={favourite ? "rgb(139, 231, 139)" : "white"}
+                color={favourite ? "rgb(139, 231, 139)" : "white"}       //bookmark icon(adding images to collections)
                 size={35}
                 style={{
                   padding: "5px",
@@ -250,13 +238,15 @@ console.log(width)
                   backgroundColor: favourite ? "white" : "",
                 }}
                 onClick={() => {
-                  setSelectedImage({ webformatURL, tags }); // Set the selected image
+                  setSelectedImage({ webformatURL, tags }); // Set the selected image and passinf it to as params
                   handleFavourite();
                 }}
                 onMouseEnter={handleBookmarkHover}
                 onMouseLeave={handleBookmarkUnhover}
               />
-            ) : (
+
+              ) : (
+
               <BookmarkPlus
                 className="favourites--icon"
                 color={favourite ? "rgb(139, 231, 139)" : "white"}
@@ -278,18 +268,22 @@ console.log(width)
             {bookmarkHovered && <p className="bookmark--hover">add to collection</p>}
           </div>
         )}
-        {hovered && (
-          <div className="user--profile">
-            <h1 className="user--name">{user}</h1>
+
+        {hovered && (             //image of the picture owner
+          <div className="user--profile">         
+            <h1 className="user--name">{user}</h1>        
           </div>
         )}
+
         {hovered && <img src={userProfile} alt="" className="user--image" />}
-        {hovered && (
-          <div className="picture--tag">
+
+        {hovered && (             //tags about the picture
+            <div className="picture--tag">
             <p className="tag">{tags}</p>
           </div>
         )}
-        {imageLoaded ? (
+
+        {imageLoaded ? (          //the image container
           <div className="image-container" style={galleryStyles}>
             <img
               src={webformatURL}
@@ -298,7 +292,9 @@ console.log(width)
               onLoad={handleImageLoad}
             />
           </div>
+
         ) : (
+
           <div className="image-container" style={galleryStyles}>
             <img
               src={webformatURL}
@@ -311,39 +307,53 @@ console.log(width)
         )}
       </div>
 
-      {showCollection && (
+      {showCollection && (    
+              //the colections container and logic
         <div className="collections--container">
+
           <div className="collections--content">
+
             <X onClick={removeCollection} size={30} style={{float:'right', marginRight:'15px',marginTop:'10px',}}/>
+
             <h1>Add to collections</h1>
+
             <p>Add this image to an existing or new collection</p>
 
             <span className="create--collection">
+
               <button onClick={() => createNewCollection()}>
                 <Plus />
                 <span>Create new collection</span>
               </button>
+
             </span>
 
-            <form>
-              <input
+            <form>      
+
+              <input // to be revisited!!
                 type="text"
                 name="searchCollection"
                 className="search--collection"
                 placeholder="search collections..."
               />
+
             </form>
 
-            {collections.map((collection) => (
+            {collections.map((collection) => (    //mapping the list of collections and logic
               <div key={collection.id} className="collections">
+
                 <h1>{collection.name} <span>-({collection.images.length} image(s) added)</span></h1>
+
                 <button className="add-to-collection" onClick={() => addToCollection(selectedImage, collection.name)}>
                     <p>Add Image <FontAwesomeIcon icon={faThumbsUp} color="green"/></p>  
                 </button>
+
               </div>
             ))}
             <br />
+
           </div>
+          
         </div>
       )}
     </>

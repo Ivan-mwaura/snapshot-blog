@@ -10,13 +10,13 @@ import HomePage from "./homepage";
 
 
 const Mainpage = () => {
+
+  //states section
   const location = useLocation();
   const { currentUser } = useContext(AuthContext);
-  //const navigate = useNavigate()
-
-  
 
 
+  //protected route -> check if the user is logged in, else, go back to login page
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
       //navigate('login')
@@ -26,9 +26,10 @@ const Mainpage = () => {
     return children
   };
 
-
+  //routing via react router to various pages of the website
+  //react transitions is also included to help with smooth transitions from one page to anothe
   return (
-    <div>
+    <div className="mainpage--container" style={{backgroundColor: "transparent" }}>
       <TransitionGroup>
         <CSSTransition key={location.key} classNames="fade" timeout={300} >
           <Routes>

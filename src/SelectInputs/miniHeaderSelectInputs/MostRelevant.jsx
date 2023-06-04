@@ -5,8 +5,11 @@ import { setSelectedOrder } from "../../ReduxStore/store";
 
 const MostRelevant= () =>{
 
+    //states and redux store section
     const selectedOrder = useSelector((state) => state.selectedOrder)
     const dispatch  = useDispatch();
+
+    //declaring our options
 
     const options = [
         {label:'Editors Choice'},
@@ -18,6 +21,7 @@ const MostRelevant= () =>{
         
     ]
 
+    //custom styles for the contol and option
     const customStyles ={
         control: (provided) =>({
             ...provided,
@@ -38,6 +42,7 @@ const MostRelevant= () =>{
         })
     }
 
+    //function to dispatch the selected value to the redux store
     function  handleSelectOrder(selectedOrder){
         dispatch(setSelectedOrder(selectedOrder))
     }
@@ -45,7 +50,7 @@ const MostRelevant= () =>{
 return(
     <div>
         <Select options={options}
-         styles={customStyles}
+          styles={customStyles}
           placeholder = 'Most Relevant'
           value={selectedOrder}
           onChange={handleSelectOrder}

@@ -6,13 +6,16 @@ import '../style.scss'
 
 
 
-function HomePageGallery({ webformatURL, user, userProfile, tags }) {
+function HomePageGallery({ webformatURL, user, userProfile, tags }) {       //props passed
+
+  //states and redux section
   const [hovered, setHover] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [like, setLike] = useState(false);
   const [favourite, setFavourite] = useState(false);
   const selectedOption = useSelector((state) => state.selectedOption);
 
+    //check if images is loaded from the api 
   useEffect(() => {
     const image = new Image();
     image.src = webformatURL;
@@ -20,6 +23,9 @@ function HomePageGallery({ webformatURL, user, userProfile, tags }) {
       setImageLoaded(true);
     };
   }, [webformatURL]);
+
+
+  //functions to handle various logic
 
   function handleMouseEnter() {
     setHover(true);
@@ -33,7 +39,7 @@ function HomePageGallery({ webformatURL, user, userProfile, tags }) {
     setImageLoaded(true);
   }
 
-  function handledownload() {
+  function handledownload() {       //download logic
     console.log("click download");
     // Download logic
     const fileName = "Image.jpg";
@@ -41,14 +47,17 @@ function HomePageGallery({ webformatURL, user, userProfile, tags }) {
     saveAs(fileURL, fileName);
   }
 
-  function handleLike() {
+  function handleLike() {   //like logic
     setLike((prevLike) => !prevLike);
   }
 
-  function handleFavourite() {
+  function handleFavourite() {    //favourite logic
     setFavourite((prevFavourite) => !prevFavourite);
   }
-let galleryStyles;
+
+
+  //Orientation logic handling
+let galleryStyles;  
 
   if(selectedOption && selectedOption.value === 'horizontal'){  
      galleryStyles = {
@@ -75,19 +84,21 @@ let galleryStyles;
   }
   }
 
+
   return (
     <div
-      className={`gallery--div ${hovered ? "hovered" : ""}`}
+      className={`gallery--div ${hovered ? "hovered" : ""}`}            //gallery container
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={galleryStyles}
     >
       {hovered && (
         <div className="downloadicon--div">
+
           <Download
             className="download--icon"
             color="black"
-            size={35}
+            size={35}             //download Icon(downloading)
             style={{
               backgroundColor: "#ddd",
               padding: "5px",
@@ -95,13 +106,16 @@ let galleryStyles;
             }}
             onClick={handledownload}
           />
+
         </div>
       )}
+
       {hovered && (
         <div className="hearticon--div">
+
           <Heart
             className="heart--icon"
-            color={like ? "red" : "white"}
+            color={like ? "red" : "white"}            //heart icon (liking logic)
             fontSize="bold"
             size={35}
             style={{
@@ -112,16 +126,19 @@ let galleryStyles;
             }}
             onClick={handleLike}
           />
+
         </div>
       )}
+
       {hovered && (
         <div className={`favourites-icon-div ${hovered ? "hovered" : ""}`}>
+
           {favourite ? (
             <BookmarkCheck
               className="favourites--icon"
               color={favourite ? "rgb(139, 231, 139)" : "white"}
               size={35}
-              style={{
+              style={{                                       //bookmark icon (adding to colections)
                 padding: "5px",
                 borderRadius: "6px",
                 border: favourite ? "none" : "1px solid white",
@@ -129,7 +146,9 @@ let galleryStyles;
               }}
               onClick={handleFavourite}
             />
-          ) : (
+
+            ) : (
+
             <BookmarkPlus
               className="favourites--icon"
               color={favourite ? "rgb(139, 231, 139)" : "white"}
@@ -142,36 +161,44 @@ let galleryStyles;
               }}
               onClick={handleFavourite}
             />
+
           )}
         </div>
+
       )}
+
       {hovered && (
-        <div className="user--profile">
+        <div className="user--profile">           {/*profile name of the image owner */}
           <h1 className="user--name">{user}</h1>
         </div>
+
       )}
-      {hovered && <img src={userProfile} alt="" className="user--image" />}
+
+      {hovered && <img src={userProfile} alt="" className="user--image" />}     {/*profile--picture of the image owner */}
+
       {hovered && (
         <div className="picture--tag">
-          <p className="tag">{tags}</p>
+          <p className="tag">{tags}</p>       {/* tags about the image*/}
         </div>
       )}
-    {imageLoaded ?<div className="image-container" style={galleryStyles}>
+
+      {imageLoaded ?<div className="image-container" style={galleryStyles}>  {/* image section*/}
+        <img
+            src={webformatURL}
+            alt=""
+            className={`searched--image ${imageLoaded ? "fade-in" : ""}`}
+            onLoad={handleImageLoad}
+        />
+      </div> : <div className="image-container" style={galleryStyles}>
+
       <img
-         src={webformatURL}
-          alt=""
-          className={`searched--image ${imageLoaded ? "fade-in" : ""}`}
-        onLoad={handleImageLoad}
-      />
-    </div> : <div className="image-container" style={galleryStyles}>
-      <img
-         src={webformatURL}
+         src={webformatURL}               
           alt=""
           className={`searched--image ${imageLoaded ? "fade-in" : ""}`}
           onLoad={handleImageLoad}
           style={galleryStyles}
       />
-    </div> }
+      </div> }
 
     </div>
   );

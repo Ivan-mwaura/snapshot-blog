@@ -5,17 +5,20 @@ import { setSelectedOption } from '../../ReduxStore/store'; // Update the import
 
 
 const Orientation = () => {
+
+  //states and redux store section
   const selectedOption = useSelector((state) => state.selectedOption);
   const dispatch = useDispatch();
 
-
-  const options = [
-    
+   //declaring our options
+  const options = [  
     { value: 'horizontal', label: 'horizontal' },
     { value: 'vertical', label: 'vertical' },
     { value: 'customize', label: 'customize ' }
   ];
 
+
+   //custom styles for the contol and option
   const customStyles = {
     control: (provided) => ({
       ...provided,
@@ -37,11 +40,10 @@ const Orientation = () => {
     }),
   };
 
-  const handleSelectOption = (selectedOption) => {
-  
-    dispatch(setSelectedOption(selectedOption));
-   
 
+   //function to dispatch the selected value to the redux store
+  const handleSelectOption = (selectedOption) => { 
+    dispatch(setSelectedOption(selectedOption));
   };
 
   return (

@@ -8,19 +8,23 @@ import { setDataType, setQuery} from '../../ReduxStore/store';
 
 const MiniHeader = () => {
 
+    //redux and states section
     const navigate = useNavigate()   
     const dispatch = useDispatch()
 
   
+    //functions to handle various logic(suggestions)
 
     function handleClick1(){
         navigate('/gallerypage')
         dispatch(setQuery('nature'))
     }
+
     function handleClick2(){
         navigate('/gallerypage')
         dispatch(setQuery('wallpaper'))
     }
+
     function handleClick3(){
         navigate('/gallerypage')
         dispatch(setQuery('background'))
@@ -30,30 +34,37 @@ const MiniHeader = () => {
         navigate('/gallerypage')
         dispatch(setQuery('sky'))
     }
+
     function handleClick5(){
         navigate('/gallerypage')
         dispatch(setQuery('flowers'))
     }
+
     function handleClick6(){
         navigate('/gallerypage')
         dispatch(setQuery('food'))
     }
+
     function handleClick7(){
         navigate('/gallerypage')
         dispatch(setQuery('water'))
     }
+
     function handleClick8(){
         navigate('/gallerypage')
         dispatch(setQuery('cat'))
     }
+
     function handleClick9(){
         navigate('/gallerypage')
         dispatch(setQuery('flower'))
     }
+
     function handleClick10(){
         navigate('/gallerypage')
         dispatch(setQuery('love'))
     }
+
     function handleClick11(){
         navigate('/gallerypage')
         dispatch(setQuery('money'))
@@ -62,6 +73,7 @@ const MiniHeader = () => {
         navigate('/gallerypage')
         dispatch(setQuery('beach'))
     }
+
     function handleClick13(){
         navigate('/gallerypage')
         dispatch(setQuery('iphone'))
@@ -69,23 +81,24 @@ const MiniHeader = () => {
 
     function handleImageType1(){
         const imageType = 'photo';
-       
         dispatch(setDataType(imageType))
     }
+
     function handleImageType2(){
-        const imageType = 'illustration';
-       
+
+        const imageType = 'illustration';      
         dispatch(setDataType(imageType))
     }
+
     function handleImageType3(){
         const imageType = 'vector';
-       
         dispatch(setDataType(imageType))
     }
    
 
     return(
         <div className='mini--header'>
+
             <div className='mini-header-wrap'>
                 
                 <div className='all-options'>
@@ -98,6 +111,7 @@ const MiniHeader = () => {
                     <button className='butn6'><FontAwesomeIcon icon={faFileAudio}/>&nbsp; Sound Effects</button>
                     <button className='butn7'><FontAwesomeIcon icon={faFileVideo}/>&nbsp; Gifs</button>
                 </div>
+
                 <div className='suggestions'>
                     <button className='suggestion--button1' onClick={handleClick1}>nature</button>
                     <button className='suggestion--button2' onClick={handleClick2}>wallpaper</button>
@@ -113,7 +127,6 @@ const MiniHeader = () => {
                     <button className='suggestion--button12' onClick={handleClick12}>beach</button>
                     <button className='suggestion--button13' onClick={handleClick13}>Iphone</button>
                     <hr/>
-  
                 </div>
              
             </div>          

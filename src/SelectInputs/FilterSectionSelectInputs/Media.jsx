@@ -7,12 +7,15 @@ import { useNavigate } from "react-router";
 
 
 const FilterMedia = () => {
+
+  //states and redux section
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const query = useSelector((state) => state.query );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+    //declaring the options
   const options = [
     { label: 'Photos', value: 'photos', icon: faImage },
     { label: 'Illustrations', value: 'illustrations', icon: faPalette },
@@ -23,10 +26,12 @@ const FilterMedia = () => {
     { label: 'Gifs', value: 'gifs', icon: faImages },
   ];
 
+    //opening and closing the toggle button function
   const handleToggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
+    //dispatching the selected value to state and redux store
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
     dispatch(setQuery(option.value))
@@ -38,28 +43,37 @@ const FilterMedia = () => {
 
   return (
     <div className="custom-select">
+
       <div className={`select-trigger ${isOpen ? "open" : ""}`} onClick={handleToggleDropdown}>
+
         {selectedOption ? (          
             <span className="selected-label">{selectedOption.label}</span>
 
         ) : (
-          <span className="placeholder">Media</span>
+
+            <span className="placeholder">Media</span>
         )}
       </div>
+
       {isOpen && (
         <div className="select-options">
+
           {options.map((option) => (
             <div
               key={option.value}
               className={`option ${query === option ? "selected" : ""}`}
               onClick={() => handleOptionSelect(option)}
             >
+
               <FontAwesomeIcon icon={option.icon} className="option-icon" />
+
               {option.label}
             </div>
           ))}
+
         </div>
       )}
+
     </div>
   );
 };

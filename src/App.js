@@ -15,7 +15,7 @@ const App = () => {
        
        <Mainpage/>
     
-   </Provider>
+    </Provider>
       </BrowserRouter>
       
         

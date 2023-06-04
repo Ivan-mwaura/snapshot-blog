@@ -3,24 +3,22 @@ import { createContext } from "react";
 import Header from "../components/Gallerycomponents/header";
 import Body from "../components/Gallerycomponents/body";
 
-
-//import Footer from "../components/footer";
-//import Gallery from "../components/Gallery";
-
+//initialize and export  context as a named export
 export const AppContext = createContext(null);
 
 const Querycontext = () => {
   const [query, setQuery] = React.useState({
-    searchQuery: ""
-  });
+      searchQuery: ""
+   });
 
+   //states section
   const [data, setData] = React.useState([]);
   const [hits, setHits] = useState(0);
   const[selectedOption, setselectOption] = useState()
   const[page, setPage] = useState(1)
   const [showCollection, setShowCollection] = useState(false);
 
-
+//provide the value / data to our componens with our provider
   return (
     <AppContext.Provider
       value={{ query, setQuery,
@@ -28,13 +26,11 @@ const Querycontext = () => {
           hits, setHits,
            selectedOption,setselectOption,
            page, setPage,
-           showCollection, setShowCollection,
-          
-          
+           showCollection, setShowCollection,    
           }}
     >
 
-     <Header />
+      <Header />
       <Body />
    
     </AppContext.Provider>

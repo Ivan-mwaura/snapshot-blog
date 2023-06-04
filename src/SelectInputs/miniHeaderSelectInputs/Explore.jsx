@@ -4,6 +4,8 @@ import { X } from 'react-bootstrap-icons';
 import Select from 'react-select';
 
 const Explore = () => {
+
+  
   const options = [
     {
       value: 'media',

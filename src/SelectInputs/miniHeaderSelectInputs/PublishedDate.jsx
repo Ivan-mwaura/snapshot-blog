@@ -5,9 +5,11 @@ import { setPublishDate } from "../../ReduxStore/store";
 
 const PublishedDate= () =>{
 
+    //states and redux store section
     const publishDate = useSelector((state) => state.publishDate) 
     const dispatch = useDispatch()
 
+    //declaring our options
     const options = [
         {  label: 'Filter Images by ' },
         { value: '1', label: '1 month' },
@@ -19,6 +21,8 @@ const PublishedDate= () =>{
         
     ]
 
+
+     //custom styles for the contol and option
     const customStyles ={
         control: (provided) =>({
             ...provided,
@@ -38,6 +42,7 @@ const PublishedDate= () =>{
         })
     }
 
+     //function to dispatch the selected value to the redux store
     function handlePublishDate (publishDate){
         dispatch(setPublishDate(publishDate.value))
     }
@@ -45,10 +50,10 @@ const PublishedDate= () =>{
 return(
     <div>
         <Select options={options} 
-        styles={customStyles} 
-        placeholder = 'Published Date'
-        value={publishDate}
-        onChange={handlePublishDate}
+           styles={customStyles} 
+           placeholder = 'Published Date'
+           value={publishDate}
+           onChange={handlePublishDate}
         />
     </div>
 )

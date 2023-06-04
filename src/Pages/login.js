@@ -3,21 +3,25 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
-
 import { Link } from 'react-router-dom';
 
 const LogIn = () => {
+
+  //states section
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+    //assynchronus function to handle the signing/logging in of  user usinf firebase functions
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true)
+
     const form = document.getElementById('loginForm');
     const formData = new FormData(form);
     const email = formData.get('email');
     const password = formData.get('password');
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('*');
@@ -29,6 +33,7 @@ const LogIn = () => {
     }
   };
 
+  //event to submit form data via "enter keypress"
   function handleKey(event){
       if(event.key === 'Enter'){
         event.preventDefault();
@@ -36,10 +41,11 @@ const LogIn = () => {
       }
   }
 
+  //checks if user logs in , he/she cant go back to the login page, he/she remains logged in
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate('/');
+        navigate('*');
       }
     });
 
@@ -52,25 +58,34 @@ const LogIn = () => {
 
   return (
     <div className="formContainer">
+
       <div className="formWrapper">
+
         <span className="logo">Welcome to SnapShot</span>
+
         <span className="title">Please Login to proceed</span>
 
         <form onSubmit={handleLogin} id="loginForm">
-          <input type="email" name="email" placeholder="email" />
-          <input type="password" name="password" placeholder="password" />
-          <button type="submit" onKeyPress={handleKey}>Log in</button>
-            {err && <p className='invalid--login'>Invalid username... try again</p>}
-        { !err && loading && <p className='loading'>loading... Youre being redirected to the <br/>main page in a few</p> }
-        
 
+          <input type="email" name="email" placeholder="email" />
+
+          <input type="password" name="password" placeholder="password" />
+
+          <button type="submit" onKeyPress={handleKey}>Log in</button>
+
+          {err && <p className='invalid--login'>Invalid username... try again</p>}
+          { !err && loading && <p className='loading'>loading... Youre being redirected to the <br/>main page in a few</p> }
+        
         </form>
 
         <p>
           You don't have an account? <Link to="/signup">Register</Link>
         </p>
+
         <p>developer: Evan Mwaura</p>
+
       </div>
+
     </div>
   );
 };

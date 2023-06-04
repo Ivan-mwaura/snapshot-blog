@@ -15,15 +15,16 @@ import About from "../../SelectInputs/CollapsibleNavbarSelectInputs/about";
 
 const Header = () => {
 
+    //states section
   const[showExplorer, setShowExplorer] = useState(false)
   const [isOpen, setIsOpen] = useState(false);
-
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
 
-
+  //function to handle the search form
   function handleSubmit(event){
+
     event.preventDefault();
 
     const formData = new FormData(document.getElementById('searchForm'));
@@ -32,35 +33,44 @@ const Header = () => {
 
   }
 
+  //event listener logic of the enter key to submit the form
   function handleKeyPress(event){
+
     if(event.key === 'Enter'){
       event.preventDefault()
       handleSubmit(event)
     }
   };
 
+  //route home on click of the snapshot logo
   function routeHome(){
     navigate('/')
   }
 
+    //change state of the explorer menu(visibility)
   function handleExplorer(){
     setShowExplorer((prevState) => !prevState)
   }
 
+  //open the collapsible navbar
   const handleJustifyClick = () => {
     setIsOpen(!isOpen);
   };
   
+  //close the collapsible navbar
   const handleCollapse= ()=>{
     setIsOpen((prev) => !prev)
   }
 
   return (
     <div className="header--container">
+
       <nav className="header--content">
+
         <img src={logo} alt="" className="logo--title" onClick={routeHome} />
 
         <span className="h--span">
+
           <form className="search--form" onClick={handleSubmit} id="searchForm">
             <input
               type="text"
@@ -71,54 +81,70 @@ const Header = () => {
               onKeyPress={handleKeyPress}
             />
           </form>
+
         </span>
 
         <div className="explorer">
+
           <button className="explore--button"
-            onClick={handleExplorer}
-            
+            onClick={handleExplorer}            
           >
             Explore
           </button>
+
         </div>
-      {showExplorer &&  <div className="explorer--menu">
-        <div className="list--div">
-          <div className="list1">
-              <ul><label>Media</label><br/>
-                <li><FontAwesomeIcon icon={faCamera}/> &nbsp; &nbsp; Photos</li>
-                <li> <FontAwesomeIcon icon={faBrush}/>&nbsp; &nbsp;  Illustrations</li>
-                <li><FontAwesomeIcon icon={faVectorSquare}/> &nbsp; &nbsp; vectors</li>
-                <li><FontAwesomeIcon icon={faVideo}/>&nbsp; &nbsp;  Videos</li>
-                <li> <FontAwesomeIcon icon={faMusic}/> &nbsp; &nbsp; Music</li>
-                <li> <FontAwesomeIcon icon={faFileAudio}/>&nbsp; &nbsp;  sound Effects</li>
-                <li><FontAwesomeIcon icon={faFileVideo}/>&nbsp; &nbsp;  Gifs</li>
-              </ul>
+
+        {showExplorer &&  <div className="explorer--menu"> {/*Explorer menu */}
+
+          <div className="list--div">
+
+              <div className="list1">
+
+                <ul><label>Media</label><br/>
+
+                  <li><FontAwesomeIcon icon={faCamera}/> &nbsp; &nbsp; Photos</li>
+                  <li> <FontAwesomeIcon icon={faBrush}/>&nbsp; &nbsp;  Illustrations</li>
+                  <li><FontAwesomeIcon icon={faVectorSquare}/> &nbsp; &nbsp; vectors</li>
+                  <li><FontAwesomeIcon icon={faVideo}/>&nbsp; &nbsp;  Videos</li>
+                  <li> <FontAwesomeIcon icon={faMusic}/> &nbsp; &nbsp; Music</li>
+                  <li> <FontAwesomeIcon icon={faFileAudio}/>&nbsp; &nbsp;  sound Effects</li>
+                  <li><FontAwesomeIcon icon={faFileVideo}/>&nbsp; &nbsp;  Gifs</li>
+
+                </ul>
             
             </div>
 
             <div className="list2">
-              <ul><label>Discover</label><br/>
+
+              <ul> <label>Discover</label><br/>
+
                 <li>Editors Choice</li>
                 <li>curated Collections</li>
                 <li>popular Images</li>
                 <li>Popular videos</li>
                 <li>Popular Music</li>
                 <li>Popular searches</li>
-              </ul>             
+
+              </ul>      
+
             </div>
 
             <div className="list3">
-              <ul><label>Community</label><br/>
+
+              <ul> <label>Community</label><br/>
                 <li>Creators</li>
                 <li>Forum</li>
                 <li>Blog</li>
                 <li>Cameras</li>
               
               </ul>
+
             </div>
 
             <div className="list4">
-              <ul><label>About</label><br/>
+
+              <ul>  <label>About</label><br/>
+
                 <li>About us</li>
                 <li>FAQ</li>
                 <li>License Summary</li>
@@ -127,11 +153,15 @@ const Header = () => {
                 <li>cookies Policy</li>
                 <li>API</li>
                 <li>Language</li>
+
               </ul>
 
             </div>
+
           </div>
-           <div className="social--media">
+
+          <div className="social--media"> 
+
             <div>
                 <Instagram style={{color:'white'}}/> &nbsp;&nbsp; &nbsp;
                 <Twitter style={{color:'white'}}/>&nbsp;&nbsp;&nbsp;
@@ -144,13 +174,13 @@ const Header = () => {
 
         </div>}
 
-        <span className="notification">
+        <span className="notification"> 
           <Bell size={20} />
         </span>
 
-        <span className="profile"></span>
+        <span className="profile"> </span>
 
-        {/*for mobile devices, custom collapsible menu*/}
+        {/*for mobile devices, custom collapsible navbar menu*/}
 
         <div>
             <Justify size={40}
@@ -159,10 +189,12 @@ const Header = () => {
             className="justify--icon" 
         />
 
-      {isOpen && (
-        <div className="slide-container">
-          <div className="title--bar">
-            <img src={logo2} alt="" className="logo"/>
+        {isOpen && (
+          <div className="slide-container">
+
+            <div className="title--bar">
+
+              <img src={logo2} alt="" className="logo"/>
           
               <X color=""            
                 size={30} 
@@ -171,32 +203,40 @@ const Header = () => {
               />                     
             </div>  
 
-            <div style={{marginTop:'30px'}}>
+            <div style={{marginTop:'30px'}}>  {/* importedcomponents for the collpasible navbar menu*/}
               <Media/>
-            </div>    
+            </div>   
+
             <div >
               <Discover/>
-            </div>   
+            </div> 
+
             <div>
               <Community/>
             </div>  
+
             <div>
               <About/>
             </div> 
 
             <div style={{marginTop:'80px', display:'flex', gap:'30px',justifyContent:'center'}} className="collapsible-mininavbar-icons">
+              
               <span style={{color:'black', fontSize:'10px'}}>
                   <Instagram style={{color:'green'}} size={30}/> <br/>instagram
               </span>
+
               <span style={{color:'black', fontSize:'10px'}}>
                   <Twitter style={{color:'green'}} size={30}/> <br/>twitter
               </span>
+
               <span style={{color:'black', fontSize:'10px'}}>
                   <Discord style={{color:'green'}} size={30}/> <br/>discord
               </span>
+
               <span style={{color:'black', fontSize:'10px'}}>
                   <Pinterest style={{color:'green'}} size={30}/> <br/>pinterest
               </span>
+
               <span style={{color:'black', fontSize:'10px'}}>
                   <Facebook style={{color:'green'}} size={30}/> <br/>facebook
               </span>
@@ -205,15 +245,20 @@ const Header = () => {
 
         </div>
       )}
+
     </div>
 
         <span className="upload">
+
           <button className="upload--button">
             <Upload size={20} color="white" />
             Upload
           </button>
+
         </span>
+
       </nav>
+
     </div>
   );
 };

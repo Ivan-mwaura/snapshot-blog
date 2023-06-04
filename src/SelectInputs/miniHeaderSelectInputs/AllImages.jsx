@@ -5,8 +5,11 @@ import { setSelectedImageType } from "../../ReduxStore/store";
 
 const AllImages = () =>{
 
+    //states and redux store section
     const selectedImageType = useSelector((state) => state.selectedImageType)
     const dispatch = useDispatch();
+
+     //declaring our options
 
     const options = [
         { value: 'All Images', label: 'All Images' },
@@ -19,6 +22,7 @@ const AllImages = () =>{
         { value: 'gif', label: 'Gifs' },
     ]
 
+   //custom styles for the contol and option
     const customStyles ={
         control: (provided) =>({
             ...provided,
@@ -41,6 +45,7 @@ const AllImages = () =>{
         })
     }
 
+    //function to dispatch the selected value to the redux store
     function handleSelectedImageType (selectedImageType){
         dispatch(setSelectedImageType(selectedImageType))
     }
@@ -48,10 +53,10 @@ const AllImages = () =>{
 return(
     <div>
         <Select options={options} 
-        styles={customStyles}
-         placeholder = 'All Images'
-        value={selectedImageType}
-        onChange={handleSelectedImageType}
+            styles={customStyles}
+            placeholder = 'All Images'
+            value={selectedImageType}
+            onChange={handleSelectedImageType}
          />
     </div>
 )
