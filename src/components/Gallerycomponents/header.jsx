@@ -164,7 +164,7 @@ const Header = () => {
           <div className="title--bar">
             <img src={logo2} alt="" className="logo"/>
           
-              <X color="white"            
+              <X color=""            
                 size={30} 
                 className="collapse-x-icon"
                 onClick={handleCollapse}
@@ -185,20 +185,20 @@ const Header = () => {
             </div> 
 
             <div style={{marginTop:'80px', display:'flex', gap:'30px',justifyContent:'center'}} className="collapsible-mininavbar-icons">
-              <span style={{color:'white', fontSize:'10px'}}>
-                  <Instagram style={{color:'white'}} size={30}/> <br/>instagram
+              <span style={{color:'black', fontSize:'10px'}}>
+                  <Instagram style={{color:'green'}} size={30}/> <br/>instagram
               </span>
-              <span style={{color:'white', fontSize:'10px'}}>
-                  <Twitter style={{color:'white'}} size={30}/> <br/>twitter
+              <span style={{color:'black', fontSize:'10px'}}>
+                  <Twitter style={{color:'green'}} size={30}/> <br/>twitter
               </span>
-              <span style={{color:'white', fontSize:'10px'}}>
-                  <Discord style={{color:'white'}} size={30}/> <br/>discord
+              <span style={{color:'black', fontSize:'10px'}}>
+                  <Discord style={{color:'green'}} size={30}/> <br/>discord
               </span>
-              <span style={{color:'white', fontSize:'10px'}}>
-                  <Pinterest style={{color:'white'}} size={30}/> <br/>pinterest
+              <span style={{color:'black', fontSize:'10px'}}>
+                  <Pinterest style={{color:'green'}} size={30}/> <br/>pinterest
               </span>
-              <span style={{color:'white', fontSize:'10px'}}>
-                  <Facebook style={{color:'white'}} size={30}/> <br/>facebook
+              <span style={{color:'black', fontSize:'10px'}}>
+                  <Facebook style={{color:'green'}} size={30}/> <br/>facebook
               </span>
                
             </div>
