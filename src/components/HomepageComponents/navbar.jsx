@@ -58,12 +58,12 @@ const Navbar = () => {
       };
       
   const handleSignOut = async() => {
-try {
-  await auth.signOut()
-  navigate('/login')
-} catch (err) {
-  console.log(err)
-}
+      try {
+            await auth.signOut()
+            navigate('/login')
+      } catch (err) {
+        console.log(err)
+    }
     }
 
     function handleExplorer(){

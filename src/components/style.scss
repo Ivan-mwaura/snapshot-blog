@@ -25,7 +25,7 @@
   }
 }
 @mixin tecno{
-  @media screen and (max-width : 500px){
+  @media screen and (max-width : 430px){
     @content
   }
 }
@@ -641,6 +641,10 @@
           border: none;     
           color: gray;
          
+        }
+
+        @include tecno{
+          width: 150px;
         }
       }
       
@@ -1726,7 +1730,7 @@
                 height: 50px;
                 padding-top:17px;
                 margin-top: 5px;
-                margin-right: 30px;
+                margin-right: 23px;
 
                 @include tablet{
                   margin-left: 10px;
@@ -1769,7 +1773,7 @@
                 margin-right: 30px;
 
                 @include tablet {
-                  margin-right: 5px;
+                  margin-right: 1px;
                 }
 
                 &:hover{

@@ -34,7 +34,7 @@ const Body = () => {
       const today = new Date();
       const minUploadDate = getPastDate(
         today,
-        publishDate && parseInt(publishDate.value)
+        publishDate && parseInt(publishDate)
       ); // 1 month ago
       const maxUploadDate = today.toISOString().slice(0, 10); // Today's date
   

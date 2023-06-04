@@ -41,7 +41,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) {
       width: "100%",
       height: "auto",
     };
-  } else if (selectedOption && selectedOption.value === "any") {
+  } else if (selectedOption && selectedOption.value === "customize") {
     galleryStyles ={
       width: `${customWidth}px`,
       height: `${customHeight}px`,

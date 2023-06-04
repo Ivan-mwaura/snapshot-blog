@@ -5,7 +5,6 @@ import  {setCustomHeight} from '../../ReduxStore/store'
 
 const CustomDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  //const [selectedOption, setSelectedOption] = useState(null);
 
   const customStyleSelectedOption = useSelector((state) => state.customStyleSelectedOption);
   const customWidth = useSelector((state) => state.customWidth);
@@ -27,6 +26,7 @@ const CustomDropdown = () => {
   const handleOptionSelect = (option) => {
     //setSelectedOption(option);
     dispatch(setSelectedCustomStyleOption(option))
+
     if (option && (option.value === 'width' || option.value === 'height')) {
       setIsOpen(true);
     } else {
@@ -52,6 +52,8 @@ const CustomDropdown = () => {
 
     setIsOpen(false);
   };
+
+  console.log(customWidth, customHeight)
 
   return (
     <div className="custom-dropdown-size">

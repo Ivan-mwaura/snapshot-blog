@@ -12,11 +12,10 @@ import '../style.scss'
 import {Discord, Facebook, Instagram, Pinterest, Twitter, X } from "react-bootstrap-icons";
 import logo2 from "../Images/snapshot--logo3.png"
 
-
-import CustomSelect from "../../SelectInputs/FilterSectionSelectInputs/Media";
 import FilterOrientation from "../../SelectInputs/FilterSectionSelectInputs/OrientationFormats";
 import Sizing from "../../SelectInputs/FilterSectionSelectInputs/Sizing";
 import FilterPublishedDate from "../../SelectInputs/FilterSectionSelectInputs/FilterPublishedDate";
+import FilterMedia from "../../SelectInputs/FilterSectionSelectInputs/Media";
 
 
 const MiniHeader = () =>{
@@ -67,7 +66,7 @@ const MiniHeader = () =>{
 
          <div className="filter--container">
             <button 
-            onClick={handleJustifyClick} 
+              onClick={handleJustifyClick} 
             >
                  <Sliders className="filter"/> filter   
             </button>
@@ -85,7 +84,7 @@ const MiniHeader = () =>{
             </div>  
 
             <div style={{marginTop:'30px'}}>
-              <CustomSelect/>
+              <FilterMedia/>
             </div>  
             <div >
               <FilterOrientation/>

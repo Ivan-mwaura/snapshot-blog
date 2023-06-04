@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import  {setCustomWidth, setSelectedCustomStyleOption} from '../../ReduxStore/store'
 import  {setCustomHeight} from '../../ReduxStore/store'
+import { useNavigate } from "react-router";
 
 const Sizing = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +12,10 @@ const Sizing = () => {
   const customWidth = useSelector((state) => state.customWidth);
   const customHeight = useSelector((state) => state.customHeight);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const options = [
-    { label: 'You must set the `Orientation` to customize for this to work' },
+    { label: 'You must set the `Orientation` to "customize" for this to work(may not work for mobile devices)' },
     {label:''},
     {label: 'Set your Dimensions '},
     { label: 'width', value: 'width' },
@@ -25,7 +27,7 @@ const Sizing = () => {
   };
 
   const handleOptionSelect = (option) => {
-    //setSelectedOption(option);
+    
     dispatch(setSelectedCustomStyleOption(option))
     if (option && (option.value === 'width' || option.value === 'height')) {
       setIsOpen(true);
@@ -34,24 +36,19 @@ const Sizing = () => {
     }
   };
 
-  const handleCustomWidthValueChange = (e) => {
+    const handleCustomWidthValueChange = (e) => {
+        dispatch(setCustomWidth(e.target.value))       
+    };
+    const handleCustomHeightValueChange = (e) => {
+        dispatch(setCustomHeight(e.target.value))     
+    };
 
-    dispatch(setCustomWidth(e.target.value))
-       
-  };
-  const handleCustomHeightValueChange = (e) => {
-
-    dispatch(setCustomHeight(e.target.value))
-  
-  
-};
-
-  const handleApplyCustomRange = () => {
-    // Perform actions specific to custom range selection
-    
-
+  const handleApplyCustomRange = () => {   
     setIsOpen(false);
+    navigate('/gallerypage')
   };
+
+
 
   return (
     <div className="custom-dropdown-sizing">

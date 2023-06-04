@@ -39,7 +39,7 @@ const PublishedDate= () =>{
     }
 
     function handlePublishDate (publishDate){
-        dispatch(setPublishDate(publishDate))
+        dispatch(setPublishDate(publishDate.value))
     }
 
 return(
