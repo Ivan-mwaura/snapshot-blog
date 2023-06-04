@@ -1722,7 +1722,6 @@
               }
 
              
-
               .notification{
                 display: flex;
                 justify-content: center;
@@ -1734,6 +1733,7 @@
 
                 @include tablet{
                   margin-left: 10px;
+                  margin-right: 15px;
                   
                 }
                 &:hover{
@@ -1773,7 +1773,7 @@
                 margin-right: 30px;
 
                 @include tablet {
-                  margin-right: 1px;
+                  margin-right: 5px;
                 }
 
                 &:hover{
@@ -1785,6 +1785,8 @@
               .upload {
                 margin-right: 30px;
                 margin-top: 10px;
+
+                margin-right: 0;
                 .upload--button{
                   width: 100px;
                   height: 40px;
@@ -1796,6 +1798,7 @@
 
                   @include mobile{
                     display: none;
+                    
                   }
                 }
                 
