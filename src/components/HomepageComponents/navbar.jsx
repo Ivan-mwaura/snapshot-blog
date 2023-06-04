@@ -1,7 +1,6 @@
 import React ,{useRef}from 'react'
 import '../style.scss'
-
-import AllImages from '../../SelectInputs/AllImages'
+import AllImages from '../../SelectInputs/miniHeaderSelectInputs/AllImages'
 import { Bell, Discord, Facebook, Instagram, Pinterest, Search, Twitter, Upload } from 'react-bootstrap-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBrush, faCamera, faFileAudio, faFileVideo, faMusic, faVectorSquare, faVideo } from '@fortawesome/free-solid-svg-icons';

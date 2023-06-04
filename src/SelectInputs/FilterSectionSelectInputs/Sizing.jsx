@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import  {setCustomWidth, setSelectedCustomStyleOption} from '../ReduxStore/store'
-import  {setCustomHeight} from '../ReduxStore/store'
+import  {setCustomWidth, setSelectedCustomStyleOption} from '../../ReduxStore/store'
+import  {setCustomHeight} from '../../ReduxStore/store'
 
-const CustomDropdown = () => {
+const Sizing = () => {
   const [isOpen, setIsOpen] = useState(false);
   //const [selectedOption, setSelectedOption] = useState(null);
 
@@ -54,7 +54,7 @@ const CustomDropdown = () => {
   };
 
   return (
-    <div className="custom-dropdown">
+    <div className="custom-dropdown-sizing">
       <div
         className={`dropdown-toggle ${isOpen ? "open" : ""}`}
         onClick={handleToggleDropdown}
@@ -102,4 +102,4 @@ const CustomDropdown = () => {
   );
 };
 
-export default CustomDropdown;
+export default Sizing;

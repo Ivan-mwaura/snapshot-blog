@@ -8,10 +8,10 @@ import { setQuery } from "../../ReduxStore/store";
 import "../style.scss";
 import {  useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Media from "../../CustomSelectInputs/media";
-import Discover from "../../CustomSelectInputs/discover";
-import Community from "../../CustomSelectInputs/community";
-import About from "../../CustomSelectInputs/about";
+import Media from "../../SelectInputs/CollapsibleNavbarSelectInputs/media";
+import Discover from "../../SelectInputs/CollapsibleNavbarSelectInputs/discover";
+import Community from "../../SelectInputs/CollapsibleNavbarSelectInputs/community";
+import About from "../../SelectInputs/CollapsibleNavbarSelectInputs/about";
 
 const Header = () => {
 
@@ -21,10 +21,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
- /* function handleChange(event) {
-    event.preventDefault();
-    dispatch(setQuery( event.target.value));
-  }*/
+
 
   function handleSubmit(event){
     event.preventDefault();
@@ -151,19 +148,16 @@ const Header = () => {
           <Bell size={20} />
         </span>
 
-        {/*<Justify size={40}  color="black" className={`toggle-button ${isOpen ? 'open' : ''}`} onClick={toggleMenu} />*/}
-
         <span className="profile"></span>
 
         {/*for mobile devices, custom collapsible menu*/}
 
         <div>
-      <Justify size={40}
-       color="black" 
-       onClick={handleJustifyClick} 
-       className="justify--icon"
-       
-       />
+            <Justify size={40}
+            color="black" 
+            onClick={handleJustifyClick} 
+            className="justify--icon" 
+        />
 
       {isOpen && (
         <div className="slide-container">
@@ -174,7 +168,7 @@ const Header = () => {
                 size={30} 
                 className="collapse-x-icon"
                 onClick={handleCollapse}
-             />                     
+              />                     
             </div>  
 
             <div style={{marginTop:'30px'}}>
@@ -190,7 +184,7 @@ const Header = () => {
               <About/>
             </div> 
 
-            <div style={{marginTop:'100px', display:'flex', gap:'30px',justifyContent:'center'}} className="collapsible-mininavbar-icons">
+            <div style={{marginTop:'80px', display:'flex', gap:'30px',justifyContent:'center'}} className="collapsible-mininavbar-icons">
               <span style={{color:'white', fontSize:'10px'}}>
                   <Instagram style={{color:'white'}} size={30}/> <br/>instagram
               </span>

@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import { faImage, faPalette, faVectorSquare, faVideo, faMusic, faVolumeUp, faImages } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch, useSelector } from "react-redux";
+import { setQuery } from "../../ReduxStore/store";
+import { useNavigate } from "react-router";
+
+
 
 const Media = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+
+  const query = useSelector((state) => state.query)
+   const dispatch = useDispatch();
+   const navigate = useNavigate()
 
   const options = [
-    { label: 'Photos', value: 'photos' },
-    { label: 'Illustrations', value: 'illustrations' },
-    { label: 'Vectors', value: 'vectors' },
+    { label: 'Photos', value: 'photo' },
+    { label: 'Illustrations', value: 'illustration' },
+    { label: 'Vectors', value: 'vector' },
     { label: 'Videos', value: 'videos' },
     { label: 'Music', value: 'music' },
     { label: 'Sound Effects', value: 'sound-effects' },
@@ -21,14 +29,17 @@ const Media = () => {
   };
 
   const handleOptionSelect = (option) => {
-    setSelectedOption(option);
+   
+    dispatch(setQuery(option.value))
     setIsOpen(false);
+    navigate('/gallerypage')
   };
+  console.log(query)
 
   const iconMap = {
-    photos: faImage,
-    illustrations: faPalette,
-    vectors: faVectorSquare,
+    photo: faImage,
+    illustration: faPalette,
+    vector: faVectorSquare,
     videos: faVideo,
     music: faMusic,
     "sound-effects": faVolumeUp,
@@ -43,14 +54,14 @@ const Media = () => {
         onClick={handleToggleDropdown}
         
       >
-        {selectedOption ? selectedOption.label : "Media"}
+        { "Media"}
       </div>
       {isOpen && (
         <div className="dropdown-options">
           {options.map((option) => (
     <div
       key={option.value}
-      className={`option ${selectedOption === option ? "selected" : ""}`}
+      className={`option ${query === option ? "selected" : ""}`}
       onClick={() => handleOptionSelect(option)}
     >
       <FontAwesomeIcon icon={iconMap[option.value]} 

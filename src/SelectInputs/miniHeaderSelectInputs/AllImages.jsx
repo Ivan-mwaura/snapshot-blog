@@ -1,7 +1,7 @@
 import React from "react";
 import Select from 'react-select';
 import { useSelector,useDispatch } from "react-redux";
-import { setSelectedImageType } from "../ReduxStore/store";
+import { setSelectedImageType } from "../../ReduxStore/store";
 
 const AllImages = () =>{
 

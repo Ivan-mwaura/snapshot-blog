@@ -470,14 +470,9 @@
                   &:hover{
                     background-color: green;
                     border:1px solid green;
-                  }
-
-                
-                
+                  }              
               }
-
-            
-       
+    
         
           @keyframes slide-down {
             0% {
@@ -491,7 +486,7 @@
 
           .collapsible-mininavbar-icons{
             @include tecno{
-              margin-top: 120px;
+              margin-top: 90px;
             }
           }
 
@@ -588,7 +583,9 @@
   width: 100%;
 }
 
-  .mini-header-container{
+//styles for the MINIHEADER GALLERY COMPONENT
+
+.mini-header-container{
    display: flex;
     padding-left: 15px;  
     margin-top: 120px;
@@ -623,83 +620,7 @@
 
     }
 
-    .custom-dropdown {
-      position: relative;
-      display: inline-block;
-      
-      width: 190px;
-      border-radius: 4px;
-      
-      
-    }
-
-    .dropdown-toggle {
-      cursor: pointer;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 4px;
-
-      &:hover{
-        background-color:#ccc;
-        border: none;
-      }
-    }
-
-    .dropdown-toggle.open {
-      background-color: #f0f0f0;
-      font-weight: bold;
-    }
-
-    .dropdown-options {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 8px;
-      width: 300px;
-      z-index: 1;
-    }
-    
-  .option {
-    cursor: pointer;
-    padding: 4px;
-    color: #1a0670;
-    font-weight: bold;
-  }
-
-
-      
-  .custom-option {
-    font-weight: bold;
-    color:green;
-  }
-
-  .custom-input {
-    display: flex;
-    align-items: center;
-    margin-top: 8px;
-  }
-
-  .custom-input input {
-    flex: 1;
-    padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  .custom-input button {
-    margin-left: 8px;
-    padding: 4px 8px;
-    background-color: #ccc;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-  }
-
-
+   
     .filter--container{    
       
       display: none;
@@ -728,9 +649,89 @@
         display: block;
         
       }
+
+      .slider-container {
+        position: absolute;           
+        left: 0;
+        width: 100%;
+        background-color:white;
+        border-radius:5px;
+        height: 1300px;
+        z-index: 999;
+        animation: slide-down 1s forwards;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        
+          
+
+          .title--bar{
+            display: flex;
+            flex-direction: row;
+            padding-bottom: 13px;
+            border-bottom: 1px solid #ccc;
+
+           
+
+            .logo{
+              width: 150px;
+              height: 50px;
+            }
+
+              .collapse-x-icon{
+                position: absolute;
+                right: 0;
+                margin-right: 20px;
+                background-color: #ccc;
+                
+                border-radius: 30%;
+                
+
+                @include tecno{
+                  margin-right: 40px;
+                }
+
+                &:hover{
+                  background-color: green;
+                  border:1px solid green;
+                }
+
+
+                            
+            }
+
+             
+        @keyframes slide-down {
+          0% {
+            top: -100%;
+          }
+          100% {
+            top: 1%;
+           
+          }
+        }
+
+        .collapsible-mininavbar-icons{
+          @include tecno{
+            margin-top: 90px;
+          }
+        }
+
+       
+      } 
+    }
       
       
     }
+
+
+    
+
+
     .mini-header-right{
       display: flex;
       padding-left: 120px;
@@ -2024,73 +2025,327 @@
     background-color:transparent;
   }
 
-  //STYLES FOR THE CUSTOM SELECT INPUTS
-/*1.MEDIA INPUT STYLES*/
-.custom-dropdown {
+
+  //STYLING FOR THE SIZE.JSX 
+  //STYLING FOR THE SIZE.JSX CUSTOM SELECT INPUT
+    .custom-dropdown-size {
+      position: relative;
+      display: inline-block;
+      width: 190px;
+      border-radius: 4px;
+      
+      .dropdown-toggle {
+        cursor: pointer;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        
+        &:hover {
+          background-color: #ccc;
+          border: none;
+        }
+        
+        &.open {
+          background-color: #f0f0f0;
+          font-weight: bold;
+        }
+      }
+      
+      .dropdown-options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px;
+        width: 300px;
+        z-index: 1;
+        
+        .option {
+          cursor: pointer;
+          padding: 4px;
+          color: #686565;        
+          font-size: 14px;
+          font-weight: normal;
+          
+          &.custom-option {
+            font-weight: bold;
+            color: green;
+          }
+        }
+        
+        .custom-input {
+          display: flex;
+          align-items: center;
+          margin-top: 8px;
+          
+          input {
+            flex: 1;
+            padding: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          }
+          
+          button {
+            margin-left: 8px;
+            padding: 4px 8px;
+            background-color: #ccc;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    
+
+  //STYLES FOR THE COLLAPSIBLE NAVBAR SELECT INPUTS
+
+  .custom-dropdown {
+    position: relative;
+    width: 100%;
+  
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;    
+      border-radius: 5px;
+      border: 1px solid white;
+      cursor: pointer;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      border: none;
+  
+      &:hover {
+        background-color:#ccc;
+      }
+    }
+  
+    .dropdown-toggle.open {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  
+    .dropdown-options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding-left: 20px;
+      border-radius: 5px;
+      width: 100%;
+      background-color: #332305;
+      color: white;
+      font-style: bold;
+      border-top: none;
+      display: flex;
+      flex-direction: column;
+      z-index: 999;
+  
+      background-color: #051c33;
+  
+      .option {
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+  
+        &:hover {
+          background-color: #817e7e;
+        }
+  
+        &.selected {
+          background-color: #ccc;
+        }
+      }
+    }
+  }
+  
+
+//STYLING FOR FILTER SECTION SELECT INPUTS(media and Orientation Formats)
+.custom-select {
   position: relative;
- width: 100%;
+  width: 100%px;
 
- 
-}
+  .select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
 
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid white;
-  cursor: pointer;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  border: none;
+    .select-icon {
+      margin-right: 10px;
+    }
 
-  &:hover{
-    background-color: #ccc;
+    .selected-label {
+      font-weight: bold;
+      color: black;
+      
+    }
+
+    .placeholder {
+      
+      background-color: white;
+     
+      font-size: 15px;
+    }
+
+    &::after {
+      content: "";
+      border: solid black;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      font-weight: normal;
+      transform: rotate(45deg);
+      margin-left: 10px;
+      margin-top: 2px;
+    }
   }
 
- 
+  .select-trigger.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    color: black;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   
+    z-index: 999;
+
+    .option {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+      color: #686565;
+      font-size: 14px;
+      font-weight: normal;
+
+      &:hover {
+        background-color: #f2f2f2;
+      }
+
+      &.selected {
+        background-color: white;
+        
+      }
+
+      .option-icon {
+        margin-right: 10px;
+      }
+    }
+  }
 }
 
-.dropdown-toggle.open {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+//STYLING FOR THE FILTER-SECTION SELECTION INPUTS(SIZING)
 
- 
-}
-
-.dropdown-options {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  padding-left:20px;
-  border-radius: 5px;
+.custom-dropdown-sizing {
+  position: relative;
+  display: inline-block;
   width: 100%;
-  background-color:#051c33;
-  color: white;
-  font-style:bold;
-  border-top: none;
-  display: flex;
-  flex-direction: column;
-  z-index: 999;
+  border-radius: 4px;
   
-  background-color:#051c33;
+  .dropdown-toggle {
+    cursor: pointer;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    color: #9c9999;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;    
+    font-size: 15px;
+    
+    &.open {
+      background-color: #f0f0f0;
+      font-weight: normal;
+      color: #686565;
+      
+    }
+
+    &::after {
+      content: "";
+      border: solid black;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      font-weight: normal;
+      transform: rotate(45deg);
+      margin-top: 2px;
+      right: 0;
+      position: absolute;
+      margin-right: 10px;
+    }
+  }
+  
+  .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    z-index: 1;
+    
+   
+
+    .option {
+
+      cursor: pointer;
+      padding: 4px;
+      color: #1a0670;
+      font-weight: bold;
+      color: #686565;
+      font-size: 14px;
+      font-weight: normal;
+      
+      &.custom-option {
+        font-weight: normal;
+        color: green;
+      }
+    }
+    
+    .custom-input {
+      display: flex;
+      align-items: center;
+      margin-top: 8px;
+      
+      input {
+        flex: 1;
+        padding: 4px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      
+      button {
+        margin-left: 8px;
+        padding: 4px 8px;
+        background-color: #ccc;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
-.option {
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
 
-  &:hover {
-    background-color: #817e7e;
-  }
 
-  &.selected {
-    background-color: #ccc;
-  }
-}
 
-  
   
