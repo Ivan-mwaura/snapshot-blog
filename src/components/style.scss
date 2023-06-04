@@ -1760,6 +1760,10 @@
                 border-radius: 50%;
                 background-color: yellow;
                 margin-right: 10px;
+
+                @include tecno{
+                    margin-right: 7px;
+                }
               }
               .signout{
                 background-color:white;
@@ -1773,7 +1777,7 @@
                 margin-right: 30px;
 
                 @include tablet {
-                  margin-right: 5px;
+                  margin-right: 1px;
                 }
 
                 &:hover{
@@ -1786,7 +1790,9 @@
                 margin-right: 30px;
                 margin-top: 10px;
 
-                margin-right: 0;
+                @include tablet{
+                  margin-right: 0;
+                }
                 .upload--button{
                   width: 100px;
                   height: 40px;
