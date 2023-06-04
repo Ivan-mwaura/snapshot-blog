@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
 import { setSelectedOption } from '../../ReduxStore/store'; // Update the import path according to your project structure
-import { useNavigate } from 'react-router';
+
 
 const Orientation = () => {
   const selectedOption = useSelector((state) => state.selectedOption);
@@ -38,7 +38,7 @@ const Orientation = () => {
   };
 
   const handleSelectOption = (selectedOption) => {
-    // Dispatch an action to update the selectedOption in Redux store
+  
     dispatch(setSelectedOption(selectedOption));
    
 
