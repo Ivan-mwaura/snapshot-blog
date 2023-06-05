@@ -7,6 +7,7 @@ import "../style.scss";
 import { Plus } from "react-bootstrap-icons";
 import { AppContext } from "../../Context/querycontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useGesture } from "@use-gesture/react";
 
 function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props passed
 
@@ -125,6 +126,37 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
 
     setShowCollection(true);
   }
+
+    //on doubleclicking the image, the likes are added by one
+  function handleImageDoubleClick(){
+    setLike((prevLike) => !prevLike)
+
+    if(like === false){
+      setLikeCount((likeCount) => likeCount + 1);
+    }
+    else{
+      setLikeCount((likeCount) => likeCount - 1);
+    }
+    
+  }
+
+  //event listener  using react-use-gesture that updates the like state ondoubleclick
+  //for mobile devices
+
+  const bind = useGesture({
+    onDoubleClick : () =>{
+
+      setLike((prevLike) => !prevLike)
+
+      if(like === false){
+        setLikeCount((likeCount) => likeCount + 1);
+      }
+      else{
+        setLikeCount((likeCount) => likeCount - 1);
+      }
+
+    }
+  })
 
 
   // Creating a new collection
@@ -290,6 +322,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
               alt=""
               className={`searched--image ${imageLoaded ? "fade-in" : ""}`}
               onLoad={handleImageLoad}
+              onDoubleClick={handleImageDoubleClick}
             />
           </div>
 
@@ -302,6 +335,8 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
               className={`searched--image ${imageLoaded ? "fade-in" : ""}`}
               onLoad={handleImageLoad}
               style={galleryStyles}
+              onDoubleClick={handleImageDoubleClick}
+              {...bind()}
             />
           </div>
         )}
