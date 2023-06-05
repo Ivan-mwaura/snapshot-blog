@@ -7,6 +7,7 @@ import LogIn from "./login";
 import Signin from "./signup";
 import { AuthContext } from "../Auth";
 import HomePage from "./homepage";
+import UserAndImageInfoPage from "../components/Gallerycomponents/userAndImageInfoPage";
 
 
 const Mainpage = () => {
@@ -43,6 +44,7 @@ const Mainpage = () => {
             <Route path="/login" element={<LogIn />} />
             <Route path="/signup" element={<Signin />} />
             <Route path="/gallerypage" element={<Querycontext/>}/>
+            <Route path="/userimageinfopage" element={<UserAndImageInfoPage/>}/>
             
           </Routes>
         </CSSTransition>

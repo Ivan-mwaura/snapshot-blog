@@ -14,7 +14,12 @@ const initialState = {
   },
   customStyleSelectedOption:null,
   customWidth:'',
-  customHeight:''
+  customHeight:'',
+  userImageInfo:{
+    userProfileImage:[],
+    userName:'',
+    image:[]
+  }
 
   // Add any other initial state properties here
 };
@@ -95,6 +100,14 @@ export const setSelectedCustomStyleOption =(option) => {
     payload:option
   }
 }
+
+
+export const SetUserImageInfo = (userImage, username, selectedImage) => {
+  return {
+    type: 'SET_USER_IMAGE_INFO',
+    payload: { userImage, username, selectedImage },
+  };
+};
 
 
 //define your Reducers
@@ -201,6 +214,20 @@ const customStyleSelectedOptionReducer = (state = initialState.customStyleSelect
   }
 }
 
+const userImageInfoReducer = (state = initialState.userImageInfo, action) => {
+  switch(action.type){
+    case 'SET_USER_IMAGE_INFO':
+      return{
+          ...state,
+          userProfileImage:action.payload.userImage,
+          userName:action.payload.username,
+          image:action.payload.selectedImage
+    }
+    default:
+      return state
+  }
+}
+
 
 
 // Combine all reducers
@@ -216,7 +243,8 @@ const rootReducer = combineReducers({
   dataType: dataTypeReducer,
   customWidth: customWidthReducer,
   customHeight: customHeightReducer,
-  customStyleSelectedOption: customStyleSelectedOptionReducer
+  customStyleSelectedOption: customStyleSelectedOptionReducer,
+  userImageInfo: userImageInfoReducer
   // Add any other reducers here
 });
 

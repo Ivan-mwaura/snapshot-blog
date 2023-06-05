@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { saveAs } from "file-saver";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BookmarkCheck, BookmarkPlus, Download,  Heart, X } from "react-bootstrap-icons";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import "../style.scss";
@@ -8,6 +8,8 @@ import { Plus } from "react-bootstrap-icons";
 import { AppContext } from "../../Context/querycontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useGesture } from "@use-gesture/react";
+import { SetUserImageInfo } from "../../ReduxStore/store";
+import { useNavigate } from "react-router";
 
 function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props passed
 
@@ -24,11 +26,12 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
   const [collections, setCollections] = useState([]);
 
   // Redux and contextAPI  section
-  const{showCollection, setShowCollection} = useContext(AppContext)
+  const{showCollection, setShowCollection} = useContext(AppContext);
   const selectedOption = useSelector((state) => state.selectedOption);
   const customWidth = useSelector((state) => state.customWidth);
   const customHeight = useSelector((state) => state.customHeight);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
   
   let galleryStyles;//orientation format determination
 
@@ -128,7 +131,8 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
   }
 
     //on doubleclicking the image, the likes are added by one
-  function handleImageDoubleClick(){
+ /*
+     function handleImageDoubleClick(){
     setLike((prevLike) => !prevLike)
 
     if(like === false){
@@ -137,8 +141,19 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
     else{
       setLikeCount((likeCount) => likeCount - 1);
     }
-    
+  */  
+
+
+//store to local storage
+ //adding the selected image to redux so as to use them in the userinfopage
+  function handleselectedImage(userImage,username, selectedImage  ){
+
+    dispatch(SetUserImageInfo( userImage, username, selectedImage))
+    navigate('/userimageinfopage')
   }
+
+
+
 
   //event listener  using react-use-gesture that updates the like state ondoubleclick
   //for mobile devices
@@ -322,7 +337,9 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
               alt=""
               className={`searched--image ${imageLoaded ? "fade-in" : ""}`}
               onLoad={handleImageLoad}
-              onDoubleClick={handleImageDoubleClick}
+              //onDoubleClick={handleImageDoubleClick}
+              {...bind()}
+              onClick={ () => handleselectedImage(userProfile, user, webformatURL)}
             />
           </div>
 
@@ -335,7 +352,8 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
               className={`searched--image ${imageLoaded ? "fade-in" : ""}`}
               onLoad={handleImageLoad}
               style={galleryStyles}
-              onDoubleClick={handleImageDoubleClick}
+             // onDoubleClick={handleImageDoubleClick}
+              onClick={ () => handleselectedImage(webformatURL, userProfile, user)}
               {...bind()}
             />
           </div>
