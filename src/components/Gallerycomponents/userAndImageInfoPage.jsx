@@ -1,16 +1,36 @@
-import React from  'react';
+import React, { useState } from  'react';
 import Header from './header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark, faDownload, faHeart, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faHeart, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import Footer from '../footer';
+import Download from '../../SelectInputs/UserImageInfoPageSelectInputs.jsx/Download';
+
 
 const UserAndImageInfoPage = () =>{
 
 const userImageInfo = useSelector((state) => state.userImageInfo);
+const [likeCount, setLikeCount] = useState(userImageInfo.likes);
 
 
-console.log(userImageInfo.userProfileImage)
+const [like, setLike] = useState(false);
+
+
+
+function handleLike(){
+
+setLike((prevLike) => !prevLike);
+
+    if(like === false){
+      setLikeCount((likeCount) => likeCount + 1);
+    }
+    else{
+      setLikeCount((likeCount) => likeCount - 1);
+    }
+}
+
+
+
     return (
         <>
         <Header/>
@@ -46,13 +66,18 @@ console.log(userImageInfo.userProfileImage)
                             <FontAwesomeIcon icon={faBookmark } color='green' className='bookmark' />
                         </span>
 
-                        <span className='likes-icon'>
-                            <FontAwesomeIcon icon ={faHeart} color='black' className='heart'/> 
+                        <span className="likes-icon "  onClick={handleLike}>
+                            <FontAwesomeIcon icon ={faHeart} color='black' className={`heart ${like ? "liked" : " "}`}/> 
+                            <span>{likeCount} likes</span>
                         </span>
                     </div>
 
                     <div className='download'>
-                            <button><FontAwesomeIcon icon={faDownload} color='white'/> Download</button>
+                            
+                            <div className='download--menu'>
+                                <Download/>
+                            </div>
+                           
                     </div>
 
                 </div>

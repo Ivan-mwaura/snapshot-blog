@@ -18,9 +18,12 @@ const initialState = {
   userImageInfo:{
     userProfileImage:[],
     userName:'',
-    image:[]
-  }
-
+    image:[],
+    likes:'',
+    largeImageURL:[],
+    fullHDURL:[]
+  },
+  imageResolution:''
   // Add any other initial state properties here
 };
 
@@ -102,12 +105,19 @@ export const setSelectedCustomStyleOption =(option) => {
 }
 
 
-export const SetUserImageInfo = (userImage, username, selectedImage) => {
+export const SetUserImageInfo = (userImage, username, selectedImage, likesNo ,largeImageURL, fullHDURL) => {
   return {
     type: 'SET_USER_IMAGE_INFO',
-    payload: { userImage, username, selectedImage },
+    payload: { userImage, username, selectedImage ,likesNo ,largeImageURL, fullHDURL},
   };
 };
+
+export const setImageResolution=(option) => {
+  return {
+    type: 'SET_IMAGE_RESOLUTION',
+    payload:option
+  }
+}
 
 
 //define your Reducers
@@ -221,13 +231,24 @@ const userImageInfoReducer = (state = initialState.userImageInfo, action) => {
           ...state,
           userProfileImage:action.payload.userImage,
           userName:action.payload.username,
-          image:action.payload.selectedImage
+          image:action.payload.selectedImage,
+          likes:action.payload.likesNo,
+          largeImageURL:action.payload.largeImageURL,
+          fullHDURL:action.payload.fullHDURL
     }
     default:
       return state
   }
 }
 
+const ImageResolutionReducer = (state = initialState.customStyleSelectedOption, action) => {
+  switch(action.type){
+    case 'SET_IMAGE_RESOLUTION':
+      return action.payload
+      default:
+      return state
+  }
+}
 
 
 // Combine all reducers
@@ -244,7 +265,8 @@ const rootReducer = combineReducers({
   customWidth: customWidthReducer,
   customHeight: customHeightReducer,
   customStyleSelectedOption: customStyleSelectedOptionReducer,
-  userImageInfo: userImageInfoReducer
+  userImageInfo: userImageInfoReducer,
+  imageResolution: ImageResolutionReducer
   // Add any other reducers here
 });
 

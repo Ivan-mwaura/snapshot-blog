@@ -98,6 +98,8 @@ const Body = () => {
         key={dt.id}
         tags={dt.tags}
         webformatURL={dt.webformatURL}
+        largeImageURL={dt.largeImageURL}
+        fullHDURL={dt.fullHDURL}
         userProfile={dt.userImageURL}
         user={dt.user}
         likes = {dt.likes

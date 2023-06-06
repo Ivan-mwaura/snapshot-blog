@@ -11,7 +11,7 @@ import { useGesture } from "@use-gesture/react";
 import { SetUserImageInfo } from "../../ReduxStore/store";
 import { useNavigate } from "react-router";
 
-function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props passed
+function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, fullHDURL}) { //props passed
 
   //states section
 
@@ -94,8 +94,11 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
     saveAs(fileURL, fileName);
   }
 
+ 
+
   //likecount logic function
   function handleLikeCount() {
+
     setLike((prevLike) => !prevLike);
     if(like === false){
       setLikeCount((likeCount) => likeCount + 1);
@@ -146,12 +149,12 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
 
 //store to local storage
  //adding the selected image to redux so as to use them in the userinfopage
-  function handleselectedImage(userImage,username, selectedImage  ){
-
-    dispatch(SetUserImageInfo( userImage, username, selectedImage))
+  function handleselectedImage(userImage,username, selectedImage , likesNo, largeImageURL, fullHDURL){
+    console.log(likesNo)
+    dispatch(SetUserImageInfo( userImage, username, selectedImage, likesNo ,largeImageURL, fullHDURL))
+    
     navigate('/userimageinfopage')
   }
-
 
 
 
@@ -339,7 +342,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
               onLoad={handleImageLoad}
               //onDoubleClick={handleImageDoubleClick}
               {...bind()}
-              onClick={ () => handleselectedImage(userProfile, user, webformatURL)}
+              onClick={ () => handleselectedImage(userProfile, user, webformatURL,likeCount ,largeImageURL, fullHDURL)}
             />
           </div>
 
@@ -353,7 +356,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes,  }) { //props p
               onLoad={handleImageLoad}
               style={galleryStyles}
              // onDoubleClick={handleImageDoubleClick}
-              onClick={ () => handleselectedImage(webformatURL, userProfile, user)}
+              onClick={ () => handleselectedImage(webformatURL, userProfile, user, likeCount)}
               {...bind()}
             />
           </div>

@@ -2482,27 +2482,50 @@
       .collection-icon {           
             border: 1px solid green;
             border-radius: 4px;
-
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             .bookmark{
-              padding: 10px;
+              
+              width: 50px;
+              height: 25px;
             }
 
-            &:hover{
-              border: 2px solid green;
-            }
+            
         }
         
         .likes-icon{
           border: 1px solid black;
           border-radius: 4px;
-          width: auto;
+          width: 100px;
+          height: 40px;
+          display: flex;
+          padding-right: 5px;
+          justify-content: center;
+          cursor: pointer;
 
           .heart{
             padding: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            &.liked {
+              color: green;
+            }
+
           }
 
-        }
+          span{
+            display: flex;
+            align-items: center;
+          }
 
+         
+
+        }
+        
      
       
     }
@@ -2516,34 +2539,132 @@
         
       }
 
-      button{     
-        border: none;  
-        padding: 8px;
-        padding-right: 25px;
-        border-radius: 4px;
-        color: white;
-        background-color: green;
+      .download--menu{
 
 
-        &::after {
-          content: "";
-          border: solid white;
-          border-width: 0 2px 2px 0;
-          display: inline-block;
-          padding: 3px;
-          font-weight: normal;
-          transform: rotate(45deg);
-          margin-top: 10px;
-          right: 0;
-          position: absolute;
-          margin-right: 30px;
-
-          @include tablet{
-            margin-right: 10px;
+        //styling dot the download menu
+        .custom-select {
+          position: relative;
+          width: 100%px;
+        
+          .select-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: green;
+            border-radius: 6px;
+            padding-bottom: 15px;
+            cursor: pointer;
+            width: 250px;
+            .select-icon {
+              margin-right: 10px;
+            }
+        
+            .selected-label {
+              font-weight: bold;
+              color: black;
+              
+            }
+        
+            .placeholder {
+              
+              background-color: green;
+             color: white;
+              font-size: 15px;
+              font-weight: bold;
+            }
+        
+            &::after {
+              content: "";
+              border: solid black;
+              border-width: 0 2px 2px 0;
+              display: inline-block;
+              padding: 3px;
+              font-weight: normal;
+              transform: rotate(45deg);
+              margin-left: 10px;
+              margin-top: 2px;
+            }
           }
+        
+          .select-trigger.open {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        
+          .select-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            color: black;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+           
+            z-index: 999;
+        
+            .option {
+              display: flex;
+              align-items: center;
+              padding: 12px;
+              cursor: pointer;
+              color: #686565;
+              font-size: 14px;
+              font-weight: normal;
+              width: 100%;
+              border-bottom: 1px solid #ccc;
+              
+        
+              &:hover {
+                background-color: #dfdcdc;
+                border-radius: 5px;
+              }
+        
+              &.selected {
+                background-color: rgb(120, 245, 120);
+                color: white;
+                border-radius: 5px;
+              }
+        
+              .option-icon {
+                margin-right: 10px;
+              }
+            }
 
+            .buttons{
+              display: flex;
+              margin-top: 20px;
+              margin-bottom: 3px;
+
+              .btn-download{
+                 background-color: green;
+                 color: white;
+                 border: none;
+                 border-radius: 6px;
+                 margin-left: 2px;
+                 margin-bottom: 5px;
+                 font-size: 14px;
+                 padding: 10px;
+                 width: 100px;
+              }
+              .btn-view{
+                position: absolute;
+                right: 0;
+                margin-right: 5px;
+                margin-bottom: 5px;
+                border-radius: 6px;
+                background-color: white;
+                border: 1px solid black;
+                font-size: 14px;
+                padding: 10px;
+                width: 100px;
+
+              }
+            }
+          }
         }
-
       }
     }
   }
@@ -2560,8 +2681,13 @@
       img{
         background-color: none; 
         object-fit: cover;  
-        width: 670px;
-        height: 430px;    
+        width: 100%;
+        height: auto;
+        
+        @include tablet{
+          width: 100%;
+          height: auto;
+        }
       }
 
    }
