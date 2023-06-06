@@ -87,9 +87,9 @@ const Body = () => {
   }
 
   //loading state placeholder
-  if (!data || data.length === 0) {
+  /*if (!data || data.length === 0) {
     return <div className="loading--placeholder">Loading...</div>; // Add a loading state or placeholder
-  }
+  }*/
 
   //mappin the data to the gallery component through props
   const apidata = data.map((dt) => {

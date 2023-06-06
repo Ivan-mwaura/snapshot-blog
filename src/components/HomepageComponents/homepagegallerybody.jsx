@@ -46,6 +46,7 @@ const HomePageGalleryBody = () => {
  */
 
        //mapping the data to our homepage component
+       
     const apidata = galleryData.map((gdt) => {                     
         return(
             <HomePageGallery
