@@ -34,7 +34,8 @@ const HomePageGalleryBody = () => {
  
     },[dispatch, query.searchQuery,dataType])
 
-    if (!galleryData || galleryData.length === 0) {
+   /*
+   if (!galleryData || galleryData.length === 0) {
         return <div className="loading--placeholder">
                     <div>
                         Loading...
@@ -42,6 +43,7 @@ const HomePageGalleryBody = () => {
                 </div>; // Adding a loading state or placeholder
       }
 
+ */
 
        //mapping the data to our homepage component
     const apidata = galleryData.map((gdt) => {                     
