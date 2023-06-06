@@ -66,7 +66,7 @@ setLike((prevLike) => !prevLike);
 
                         <span className="likes-icon "  onClick={handleLike}>
                             <FontAwesomeIcon icon ={faHeart} color='black' className={`heart ${like ? "liked" : " "}`}/> 
-                            <span>{likeCount} likes</span>
+                            <span>{likeCount}&nbsp;<span>likes</span></span>
                         </span>
                     </div>
 

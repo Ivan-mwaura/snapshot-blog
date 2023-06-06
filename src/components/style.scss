@@ -2520,6 +2520,16 @@
           span{
             display: flex;
             align-items: center;
+
+            span{
+              display: flex;
+              align-items: center;
+              color: green;
+
+              @include tecno{
+                display: none;
+              }
+            }
           }
 
          
@@ -2652,6 +2662,10 @@
                  font-size: 14px;
                  padding: 10px;
                  width: 100px;
+
+                 @include tecno{
+                  width: 80px;
+                 }
               }
               .btn-view{
                 position: absolute;
@@ -2664,6 +2678,10 @@
                 font-size: 14px;
                 padding: 10px;
                 width: 100px;
+
+                @include tecno{
+                  width: 70px;
+                 }
 
               }
             }
