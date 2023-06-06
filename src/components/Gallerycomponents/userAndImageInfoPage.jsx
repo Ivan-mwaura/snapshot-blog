@@ -11,8 +11,6 @@ const UserAndImageInfoPage = () =>{
 
 const userImageInfo = useSelector((state) => state.userImageInfo);
 const [likeCount, setLikeCount] = useState(userImageInfo.likes);
-
-
 const [like, setLike] = useState(false);
 
 

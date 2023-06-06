@@ -10,7 +10,6 @@ const Download = () => {
 
   //states and redux section
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
   const imageResolution = useSelector((state) => state.imageResolution);
   const userImageInfo = useSelector((state) => state.userImageInfo);
 
@@ -24,7 +23,6 @@ const Download = () => {
     { label: '1280 x 719 -- JPG      (262KB)', value: 'largeImageURL', icon:  faImage },
     { label: '1920 x 1079 -- JPG   (556KB)', value: 'fullHDURL', icon:  faImage },
     
-
   ];
 
     //opening and closing the toggle button function
@@ -34,7 +32,6 @@ const Download = () => {
 
     //dispatching the selected value to state and redux store
   const handleOptionSelect = (option) => {
-    setSelectedOption(option);
     dispatch(setImageResolution(option.value))
     
   };
@@ -64,13 +61,8 @@ const Download = () => {
 
       <div className={`select-trigger ${isOpen ? "open" : ""}`} onClick={handleToggleDropdown}>
 
-        {selectedOption ? (          
-            <span className="selected-label">{selectedOption.label}</span>
-
-        ) : (
-
             <span className="placeholder"><FontAwesomeIcon icon={faDownload} color='white'/> Download</span>
-        )}
+
       </div>
 
       {isOpen && (

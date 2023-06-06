@@ -2557,6 +2557,10 @@
             padding-bottom: 15px;
             cursor: pointer;
             width: 250px;
+
+            @include tecno{
+                width: 200px;
+            }
             .select-icon {
               margin-right: 10px;
             }
