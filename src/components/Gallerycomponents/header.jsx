@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import {  useDispatch, useSelector } from "react-redux";
 import { Bell, Discord, Facebook, Instagram, Justify, Pinterest, Twitter, Upload, X } from "react-bootstrap-icons";
 import logo from "../Images/logo_1.jpg";
 import logo2 from "../Images/snapshot--logo3.png"
@@ -12,12 +11,12 @@ import Media from "../../SelectInputs/CollapsibleNavbarSelectInputs/media";
 import Discover from "../../SelectInputs/CollapsibleNavbarSelectInputs/discover";
 import Community from "../../SelectInputs/CollapsibleNavbarSelectInputs/community";
 import About from "../../SelectInputs/CollapsibleNavbarSelectInputs/about";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
 
     //states section
   const[showExplorer, setShowExplorer] = useState(false)
-  const query = useSelector((state) => state.query);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate()
