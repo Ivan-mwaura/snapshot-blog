@@ -55,7 +55,31 @@ const Download = () => {
     saveAs(fileURL, FileName);
   
   }
-  console.log(userImageInfo)
+
+  function handleView(){
+    let URL;
+
+    if(imageResolution === 'webformatURL'){
+      URL = userImageInfo.image
+  }
+  else if(imageResolution === 'largeImageURL'){
+      URL = userImageInfo.largeImageURL
+  }
+  else if(imageResolution === 'fullHDURL'){
+      URL = userImageInfo.fullHDURL
+  }
+
+ setIsOpen(prev => !prev);
+ 
+return(
+  <div style={{display:'flex', justifyContent:'center', backgroundColor:'red'}}>
+    <div>
+      {window.open(URL, "_blank")}
+    </div>       
+  </div>
+)
+
+  }
   return (
     <div className="custom-select">
 
@@ -84,7 +108,7 @@ const Download = () => {
           ))}
           <div className="buttons">        
             <button className="btn-download" onClick={handleDownload}> Download</button>
-            <button className="btn-view">View</button>
+            <button className="btn-view" onClick={handleView}>View</button>
         </div>
         </div>
       )}

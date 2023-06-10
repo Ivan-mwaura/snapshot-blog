@@ -5,6 +5,7 @@ import { faBookmark, faHeart, faUserPlus } from '@fortawesome/free-solid-svg-ico
 import { useSelector } from 'react-redux';
 import Footer from '../footer';
 import Download from '../../SelectInputs/UserImageInfoPageSelectInputs.jsx/Download';
+import Collections from './collections';
 
 
 const UserAndImageInfoPage = () =>{
@@ -90,6 +91,7 @@ setLike((prevLike) => !prevLike);
 
             </div>
         </div>
+        <Collections/>
 
         <Footer/>
         </>

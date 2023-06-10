@@ -11,6 +11,7 @@ const LogIn = () => {
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  
 
     //assynchronus function to handle the signing/logging in of  user usinf firebase functions
   const handleLogin = async (e) => {

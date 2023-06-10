@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Routes, Route, useLocation, Navigate} from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Querycontext from "../Context/querycontext";
@@ -8,6 +8,8 @@ import Signin from "./signup";
 import { AuthContext } from "../Auth";
 import HomePage from "./homepage";
 import UserAndImageInfoPage from "../components/Gallerycomponents/userAndImageInfoPage";
+import LoadingPage from "../components/HomepageComponents/LoadingStatePlaceholder";
+
 
 
 const Mainpage = () => {
@@ -15,6 +17,17 @@ const Mainpage = () => {
   //states section
   const location = useLocation();
   const { currentUser } = useContext(AuthContext);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+   useEffect(() => {
+    // Simulate a delay to show the loading state
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 6000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
 
   //protected route -> check if the user is logged in, else, go back to login page
@@ -37,7 +50,7 @@ const Mainpage = () => {
 
             <Route path="*" index element={
               <ProtectedRoute>
-                <HomePage />
+               {isLoading ? <LoadingPage/> : <HomePage />} 
               </ProtectedRoute>
             }
           />

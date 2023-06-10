@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  useDispatch } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { Bell, Discord, Facebook, Instagram, Justify, Pinterest, Twitter, Upload, X } from "react-bootstrap-icons";
 import logo from "../Images/logo_1.jpg";
 import logo2 from "../Images/snapshot--logo3.png"
@@ -17,6 +17,7 @@ const Header = () => {
 
     //states section
   const[showExplorer, setShowExplorer] = useState(false)
+  const query = useSelector((state) => state.query);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -102,7 +103,7 @@ const Header = () => {
 
                 <ul><label>Media</label><br/>
 
-                  <li><FontAwesomeIcon icon={faCamera}/> &nbsp; &nbsp; Photos</li>
+                  <li  onClick={dispatch(setQuery('photos'))}><FontAwesomeIcon icon={faCamera}/> &nbsp; &nbsp; Photos</li>
                   <li> <FontAwesomeIcon icon={faBrush}/>&nbsp; &nbsp;  Illustrations</li>
                   <li><FontAwesomeIcon icon={faVectorSquare}/> &nbsp; &nbsp; vectors</li>
                   <li><FontAwesomeIcon icon={faVideo}/>&nbsp; &nbsp;  Videos</li>

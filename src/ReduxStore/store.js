@@ -23,7 +23,8 @@ const initialState = {
     largeImageURL:[],
     fullHDURL:[]
   },
-  imageResolution:''
+  imageResolution:'',
+  collections:[]
   // Add any other initial state properties here
 };
 
@@ -118,6 +119,14 @@ export const setImageResolution=(option) => {
     payload:option
   }
 }
+
+export const setCollections=(option) => {
+  return {
+    type: 'SET_COLLECTIONS',
+    payload:option
+  }
+}
+
 
 
 //define your Reducers
@@ -250,6 +259,15 @@ const ImageResolutionReducer = (state = initialState.customStyleSelectedOption, 
   }
 }
 
+const collectionsReducer = (state = initialState.collections, action) => {
+  switch(action.type){
+    case 'SET_COLLECTIONS':
+      return action.payload
+      default:
+      return state
+  }
+}
+
 
 // Combine all reducers
 const rootReducer = combineReducers({
@@ -266,7 +284,8 @@ const rootReducer = combineReducers({
   customHeight: customHeightReducer,
   customStyleSelectedOption: customStyleSelectedOptionReducer,
   userImageInfo: userImageInfoReducer,
-  imageResolution: ImageResolutionReducer
+  imageResolution: ImageResolutionReducer,
+  collections: collectionsReducer                
   // Add any other reducers here
 });
 

@@ -135,8 +135,74 @@
     }
   }
 }
+//STYLES FOR THE LOADINGPAGE.JSX
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color:rgb(187, 183, 183);
+ 
+  background-color: #0f0f0f transparentize($color: hsl(0, 0%, 0%), $amount: 0);
+              transition: background-color 0.3s ease;
+ 
 
-    //STYLING FOR THE HEADER.JSX COMPONENT
+  .welcome-text {
+    opacity: 0;
+    color:green;
+    animation: fadeIn 1s ease-in forwards, scaleIn 1s ease-out forwards,skewIn 1s ease-out forwards;
+    font-weight: bold;
+
+  
+  }
+ 
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1.3);
+      font-size: 50px;
+      
+      @include tablet{
+        transform: scaleX(1);
+        font-size: 30px;
+      }
+    }
+  }
+  @keyframes skewIn {
+    0% {
+      transform: skewX(-50deg);
+    }
+    100% {
+      transform: skewX(0);
+      font-size: 50px;
+
+      @include tablet{
+        transform: skewX(1.1);
+        font-size: 30px;
+      }
+    }
+  }
+  
+ }
+  
+
+
+
+
+
+//STYLING FOR THE HEADER.JSX COMPONENT
 
 .header--container{
     display: flex;

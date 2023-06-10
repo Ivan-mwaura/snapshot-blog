@@ -21,7 +21,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
   const [likehovered, setLikeHovered] = useState(true);
   const [bookmarkHovered, setBookmarkHovered] = useState(true);
   const [likeCount, setLikeCount] = useState(likes);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState();
   const [favourite, setFavourite] = useState(false);
   const [collections, setCollections] = useState([]);
 
@@ -127,9 +127,9 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
     setShowCollection(false);
   }
 
-  function handleFavourite() {
+  function handleFavourite(largeImageURL) {
     setFavourite((prevFavourite) => !prevFavourite);
-
+    setSelectedImage(largeImageURL); 
     setShowCollection(true);
   }
 
@@ -150,7 +150,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
 //store to local storage
  //adding the selected image to redux so as to use them in the userinfopage
   function handleselectedImage(userImage,username, selectedImage , likesNo, largeImageURL, fullHDURL){
-    console.log(likesNo)
+    
     dispatch(SetUserImageInfo( userImage, username, selectedImage, likesNo ,largeImageURL, fullHDURL))
     
     navigate('/userimageinfopage')
@@ -191,24 +191,36 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
     }
   }
 
-    function addToCollection(ImageSelected, collectionName){
-      const collectionIndex = collections.findIndex(
-
-        (Collection) => Collection.name === collectionName   
-
-        );
-    
-    if(collectionIndex !== -1){
-
-      const updatedCollections = [...collections];
-      updatedCollections[collectionIndex].images.push({url:ImageSelected})       //adding the image selected to the collection
-      setCollections(updatedCollections);
-    }
+  function addToCollection(ImageSelected, collectionName) {
+    setCollections((prevCollections) => {
+      const collectionIndex = prevCollections.findIndex(
+        (collection) => collection.name === collectionName
+      );
   
-  };
+      if (collectionIndex !== -1) {
+        const updatedCollections = [...prevCollections];
+        const updatedCollection = { ...updatedCollections[collectionIndex] };
+        const images = [...updatedCollection.images];
+  
+        // Check if the image already exists in the collection
+        const imageIndex = images.findIndex((image) => image === ImageSelected);
+        if (imageIndex === -1) {
+          images.push(ImageSelected);
+          updatedCollection.images = images;
+          updatedCollections[collectionIndex] = updatedCollection;
+          return updatedCollections;
+        }
+      }
+  
+      return prevCollections;
+    });
+  }
+  
+  console.log(collections)
 
-  
-  
+
+
+
   // Storing the collections to the local storage
   useEffect(() => {
     localStorage.setItem("collections", JSON.stringify(collections));
@@ -287,10 +299,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
                   border: favourite ? "none" : "1px solid white",
                   backgroundColor: favourite ? "white" : "",
                 }}
-                onClick={() => {
-                  setSelectedImage({ webformatURL, tags }); // Set the selected image and passinf it to as params
-                  handleFavourite();
-                }}
+                onClick={() =>  handleFavourite( webformatURL)}
                 onMouseEnter={handleBookmarkHover}
                 onMouseLeave={handleBookmarkUnhover}
               />
@@ -307,10 +316,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
                   border: favourite ? "none" : "1px solid white",
                   backgroundColor: favourite ? "white" : "",
                 }}
-                onClick={() => {
-                  setSelectedImage({ webformatURL, tags }); // Set the selected image
-                  handleFavourite();
-                }}
+                onClick={() =>  handleFavourite(largeImageURL)}
                 onMouseEnter={handleBookmarkHover}
                 onMouseLeave={handleBookmarkUnhover}
               />
@@ -356,7 +362,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
               onLoad={handleImageLoad}
               style={galleryStyles}
              // onDoubleClick={handleImageDoubleClick}
-              onClick={ () => handleselectedImage(webformatURL, userProfile, user, likeCount)}
+              onClick={ () => handleselectedImage(webformatURL, userProfile, user, likeCount,largeImageURL, fullHDURL)}
               {...bind()}
             />
           </div>
