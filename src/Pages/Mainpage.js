@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Routes, Route, useLocation, Navigate} from "react-router-dom";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Querycontext from "../Context/querycontext";
 import "../components/style.scss"; // Assuming you have a CSS file for mainpage styles
 import LogIn from "./login";
@@ -11,16 +11,13 @@ import UserAndImageInfoPage from "../components/Gallerycomponents/userAndImageIn
 import LoadingPage from "../components/HomepageComponents/LoadingStatePlaceholder";
 
 
-
 const Mainpage = () => {
-
-  //states section
+  // States section
   const location = useLocation();
   const { currentUser } = useContext(AuthContext);
-
   const [isLoading, setIsLoading] = useState(true);
 
-   useEffect(() => {
+  useEffect(() => {
     // Simulate a delay to show the loading state
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -30,35 +27,35 @@ const Mainpage = () => {
   }, []);
 
 
-  //protected route -> check if the user is logged in, else, go back to login page
+
+  // Protected route -> check if the user is logged in, else, go back to login page
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
-      //navigate('login')
       return <Navigate to="/login" />;
     }
 
-    return children
+    return children;
   };
 
-  //routing via react router to various pages of the website
-  //react transitions is also included to help with smooth transitions from one page to anothe
+  // Routing with CSS transitions
   return (
-    <div className="mainpage--container" style={{backgroundColor: "transparent" }}>
+    <div className="mainpage--container" style={{ backgroundColor: "transparent" }}>
       <TransitionGroup>
-        <CSSTransition key={location.key} classNames="fade" timeout={300} >
+        <CSSTransition key={location.key} classNames="fade" timeout={300}>
           <Routes>
-
-            <Route path="*" index element={
-              <ProtectedRoute>
-               {isLoading ? <LoadingPage/> : <HomePage />} 
-              </ProtectedRoute>
-            }
-          />
+            <Route
+              path="*"
+              index
+              element={
+                <ProtectedRoute>
+                  {isLoading ? <LoadingPage /> : <HomePage />}
+                </ProtectedRoute>
+              }
+            />
             <Route path="/login" element={<LogIn />} />
             <Route path="/signup" element={<Signin />} />
-            <Route path="/gallerypage" element={<Querycontext/>}/>
-            <Route path="/userimageinfopage" element={<UserAndImageInfoPage/>}/>
-            
+            <Route path="/gallerypage" element={<Querycontext />} />
+            <Route path="/userimageinfopage" element={<UserAndImageInfoPage />} />
           </Routes>
         </CSSTransition>
       </TransitionGroup>

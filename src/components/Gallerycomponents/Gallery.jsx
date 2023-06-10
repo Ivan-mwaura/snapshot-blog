@@ -162,7 +162,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
   //for mobile devices
 
   const bind = useGesture({
-    onDoubleClick : () =>{
+    onClick : () =>{
 
       setLike((prevLike) => !prevLike)
 
@@ -216,8 +216,6 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
     });
   }
   
-  console.log(collections)
-
 
 
 
@@ -348,7 +346,8 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
               onLoad={handleImageLoad}
               //onDoubleClick={handleImageDoubleClick}
               {...bind()}
-              onClick={ () => handleselectedImage(userProfile, user, webformatURL,likeCount ,largeImageURL, fullHDURL)}
+              onClick={handleLikeCount}
+              onDoubleClick={ () => handleselectedImage(userProfile, user, webformatURL,likeCount ,largeImageURL, fullHDURL)}
             />
           </div>
 
@@ -361,8 +360,8 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
               className={`searched--image ${imageLoaded ? "fade-in" : ""}`}
               onLoad={handleImageLoad}
               style={galleryStyles}
-             // onDoubleClick={handleImageDoubleClick}
-              onClick={ () => handleselectedImage(webformatURL, userProfile, user, likeCount,largeImageURL, fullHDURL)}
+              onClick={handleLikeCount}
+              onDoubleClick={ () => handleselectedImage(webformatURL, userProfile, user, likeCount,largeImageURL, fullHDURL)}
               {...bind()}
             />
           </div>

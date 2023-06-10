@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 const Header = () => {
 
     //states section
-  const[showExplorer, setShowExplorer] = useState(false)
+  const[showExplorer, setShowExplorer] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -62,6 +62,12 @@ const Header = () => {
     setIsOpen((prev) => !prev)
   }
 
+  function handleQuery(value){
+  
+   dispatch(setQuery(value))
+   setShowExplorer((prevState) => !prevState)
+  }
+
   return (
     <div className="header--container">
 
@@ -102,13 +108,13 @@ const Header = () => {
 
                 <ul><label>Media</label><br/>
 
-                  <li  onClick={dispatch(setQuery('photos'))}><FontAwesomeIcon icon={faCamera}/> &nbsp; &nbsp; Photos</li>
-                  <li> <FontAwesomeIcon icon={faBrush}/>&nbsp; &nbsp;  Illustrations</li>
-                  <li><FontAwesomeIcon icon={faVectorSquare}/> &nbsp; &nbsp; vectors</li>
-                  <li><FontAwesomeIcon icon={faVideo}/>&nbsp; &nbsp;  Videos</li>
-                  <li> <FontAwesomeIcon icon={faMusic}/> &nbsp; &nbsp; Music</li>
-                  <li> <FontAwesomeIcon icon={faFileAudio}/>&nbsp; &nbsp;  sound Effects</li>
-                  <li><FontAwesomeIcon icon={faFileVideo}/>&nbsp; &nbsp;  Gifs</li>
+                  <li onClick={ ()=>handleQuery('photo')} ><FontAwesomeIcon icon={faCamera}/> &nbsp; &nbsp; Photos</li>
+                  <li onClick={ ()=>handleQuery('illustration')} >  <FontAwesomeIcon icon={faBrush}/>&nbsp; &nbsp;  Illustrations</li>
+                  <li onClick={ ()=>handleQuery('vector')}>  <FontAwesomeIcon icon={faVectorSquare}/> &nbsp; &nbsp; vectors</li>
+                  <li onClick={ ()=>handleQuery('video')}>  <FontAwesomeIcon icon={faVideo}/>&nbsp; &nbsp;  Videos</li>
+                  <li onClick={ ()=>handleQuery('music')} >  <FontAwesomeIcon icon={faMusic}/> &nbsp; &nbsp; Music</li>
+                  <li onClick={ ()=>handleQuery('soundeffect')}>  <FontAwesomeIcon icon={faFileAudio}/>&nbsp; &nbsp;  sound Effects</li>
+                  <li onClick={ ()=>handleQuery('gif')}>  <FontAwesomeIcon icon={faFileVideo}/>&nbsp; &nbsp;  Gifs</li>
 
                 </ul>
             

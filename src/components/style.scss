@@ -172,12 +172,9 @@
     }
     100% {
       transform: scale(1.3);
-      font-size: 50px;
+      font-size: 40px;
       
-      @include tablet{
-        transform: scaleX(1);
-        font-size: 30px;
-      }
+     
     }
   }
   @keyframes skewIn {
@@ -186,12 +183,9 @@
     }
     100% {
       transform: skewX(0);
-      font-size: 50px;
+      font-size: 40px;
 
-      @include tablet{
-        transform: skewX(1.1);
-        font-size: 30px;
-      }
+      
     }
   }
   
@@ -1206,12 +1200,13 @@
       
   
       .gallery--div .searched--image {
-        transition: transform 3s ease-in, opacity 1s ease-in-out;
+        transition: transform 1s ease-in, opacity 2s ease-in-out;
         transform-origin: center center;
         object-fit: cover;
         width: 100%;
         height: 100%;
-        opacity: 0; /* Start with 0 opacity */
+        opacity: 1; 
+       /* Start with 0 opacity */
       }
       
   
@@ -1224,6 +1219,7 @@
   }
   
   .gallery--div img.fade-in {
+    
     opacity: 1; /* Set opacity to 1 to show the image */
   }
 
@@ -2097,19 +2093,19 @@
 
   .fade-enter {
     opacity: 0;
-    background-color:transparent;
+    background-color: transparent !important;
   }
   
   .fade-enter-active {
     opacity: 1;
-    transition: opacity 2s;
-    background-color:transparent;
+    transition: opacity 2s; 
+    background-color:transparent !important;
     
   }
   
   .fade-exit {
     opacity: 1;
-    background-color:transparent;
+    background-color:transparent !important;
 
   }
 
@@ -2117,7 +2113,7 @@
   .fade-exit-active {
     opacity: 0;
     transition: opacity 2s;
-    background-color:transparent;
+    background-color:transparent !important;
   }
 
 
