@@ -346,7 +346,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
               onLoad={handleImageLoad}
               //onDoubleClick={handleImageDoubleClick}
               {...bind()}
-              onClick={handleLikeCount}
+              
               onDoubleClick={ () => handleselectedImage(userProfile, user, webformatURL,likeCount ,largeImageURL, fullHDURL)}
             />
           </div>
@@ -360,7 +360,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
               className={`searched--image ${imageLoaded ? "fade-in" : ""}`}
               onLoad={handleImageLoad}
               style={galleryStyles}
-              onClick={handleLikeCount}
+              
               onDoubleClick={ () => handleselectedImage(webformatURL, userProfile, user, likeCount,largeImageURL, fullHDURL)}
               {...bind()}
             />
