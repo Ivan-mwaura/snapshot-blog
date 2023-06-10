@@ -162,7 +162,7 @@ function Gallery({ webformatURL, user, userProfile, tags, likes ,largeImageURL, 
   //for mobile devices
 
   const bind = useGesture({
-    onClick : () =>{
+    onDoubleClick : () =>{
 
       setLike((prevLike) => !prevLike)
 
