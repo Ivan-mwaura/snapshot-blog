@@ -172,6 +172,10 @@
     100% {
       transform: scale(1.3);
       font-size: 45px;
+
+      @include tecno{
+        font-size: 30px;
+      }
       
      
     }
@@ -184,6 +188,10 @@
       transform: skewX(0);
       font-size: 45px;
 
+      @include tecno{
+        font-size: 30px;
+      }
+      
       
     }
   }

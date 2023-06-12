@@ -14,7 +14,7 @@ const LoadingPage = () => {
         const timer = setInterval(() => {
           const elapsedTime = Date.now() - startTime;
     
-          if (elapsedTime >= 3500) {
+          if (elapsedTime >= 4000) {
             setIsLoading(false);
             setShowText(true);
             clearInterval(timer);
