@@ -15,6 +15,7 @@ import FilterOrientation from "../../SelectInputs/FilterSectionSelectInputs/Orie
 import Sizing from "../../SelectInputs/FilterSectionSelectInputs/Sizing";
 import FilterPublishedDate from "../../SelectInputs/FilterSectionSelectInputs/FilterPublishedDate";
 import FilterMedia from "../../SelectInputs/FilterSectionSelectInputs/Media";
+import '../style.scss'
 
 
 const MiniHeader = () =>{

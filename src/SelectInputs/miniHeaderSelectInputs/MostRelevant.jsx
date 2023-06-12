@@ -12,12 +12,11 @@ const MostRelevant= () =>{
     //declaring our options
 
     const options = [
-        {label:'Editors Choice'},
+        {label:'Sort By '},
         {  value: 'popular', label:'Popular'},
         { value: 'latest', label: 'latest' },
         { value: 'trending', label: 'Trending' },    
-        { value: 'editors choice', label: 'Editors Choice' },
-        { value: 'mostrelevant', label: 'Most Relevant' },
+
         
     ]
 

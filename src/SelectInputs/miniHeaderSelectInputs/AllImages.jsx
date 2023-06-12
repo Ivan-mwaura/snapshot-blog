@@ -2,17 +2,20 @@ import React from "react";
 import Select from 'react-select';
 import { useSelector,useDispatch } from "react-redux";
 import { setSelectedImageType } from "../../ReduxStore/store";
+import { useNavigate } from "react-router";
 
 const AllImages = () =>{
 
     //states and redux store section
     const selectedImageType = useSelector((state) => state.selectedImageType)
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
      //declaring our options
 
     const options = [
-        { value: 'All Images', label: 'All Images' },
+        { value: 'category', label: 'Categories' },
+        { value: 'images', label: 'All Images' },
         { value: 'photo', label: 'Photos' },
         { value: 'illustration', label: 'Illustrations' },
         { value: 'vector', label: 'Vectors' },
@@ -48,6 +51,14 @@ const AllImages = () =>{
     //function to dispatch the selected value to the redux store
     function handleSelectedImageType (selectedImageType){
         dispatch(setSelectedImageType(selectedImageType))
+
+        if(selectedImageType.value === 'video'){
+            navigate('/videospage')
+        }
+        else if(selectedImageType.value === 'images'){
+            navigate('/gallerypage')
+        }
+
     }
 
 return(

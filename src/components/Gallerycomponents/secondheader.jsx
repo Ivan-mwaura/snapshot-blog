@@ -47,7 +47,7 @@ const SecondHeader = () =>{
         <div className="second-header-container">
 
             <div className="second-header-content">
-                <h1>{hits}&nbsp;&nbsp; {query.searchQuery === "" ? "Background" : query.searchQuery} Photos and Images </h1>
+                <h1> Showing: {hits}&nbsp;&nbsp; {query.searchQuery === "" ? "Background" : query.searchQuery}  Images </h1>
             </div>
 
             <div className="buttons">  

@@ -24,7 +24,8 @@ const initialState = {
     fullHDURL:[]
   },
   imageResolution:'',
-  collections:[]
+  collections:[],
+  page:(1)
   // Add any other initial state properties here
 };
 
@@ -123,6 +124,13 @@ export const setImageResolution=(option) => {
 export const setCollections=(option) => {
   return {
     type: 'SET_COLLECTIONS',
+    payload:option
+  }
+}
+
+export const setPage=(option) => {
+  return {
+    type: 'SET_PAGE',
     payload:option
   }
 }
@@ -268,6 +276,15 @@ const collectionsReducer = (state = initialState.collections, action) => {
   }
 }
 
+const pageReducer = (state = initialState.page, action) => {
+  switch(action.type){
+    case 'SET_PAGE':
+      return action.payload
+      default:
+      return state
+  }
+}
+
 
 // Combine all reducers
 const rootReducer = combineReducers({
@@ -285,7 +302,8 @@ const rootReducer = combineReducers({
   customStyleSelectedOption: customStyleSelectedOptionReducer,
   userImageInfo: userImageInfoReducer,
   imageResolution: ImageResolutionReducer,
-  collections: collectionsReducer                
+  collections: collectionsReducer, 
+  page:pageReducer
   // Add any other reducers here
 });
 

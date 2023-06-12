@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Routes, Route, useLocation, Navigate} from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import Querycontext from "../Context/querycontext";
 import "../components/style.scss"; // Assuming you have a CSS file for mainpage styles
 import LogIn from "./login";
 import Signin from "./signup";
@@ -9,6 +8,9 @@ import { AuthContext } from "../Auth";
 import HomePage from "./homepage";
 import UserAndImageInfoPage from "../components/Gallerycomponents/userAndImageInfoPage";
 import LoadingPage from "../components/HomepageComponents/LoadingStatePlaceholder";
+import VideosPage from '../components/VideosComponent/videosPage'
+import Querycontext from "../Context/querycontext";
+
 
 
 const Mainpage = () => {
@@ -21,7 +23,7 @@ const Mainpage = () => {
     // Simulate a delay to show the loading state
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 6000);
+    }, 7000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -48,7 +50,7 @@ const Mainpage = () => {
               index
               element={
                 <ProtectedRoute>
-                  {isLoading ? <LoadingPage /> : <HomePage />}
+                  {isLoading ? <LoadingPage /> : <HomePage/>}
                 </ProtectedRoute>
               }
             />
@@ -56,6 +58,7 @@ const Mainpage = () => {
             <Route path="/signup" element={<Signin />} />
             <Route path="/gallerypage" element={<Querycontext />} />
             <Route path="/userimageinfopage" element={<UserAndImageInfoPage />} />
+            <Route path="/videospage" element={<VideosPage/>}/>
           </Routes>
         </CSSTransition>
       </TransitionGroup>
