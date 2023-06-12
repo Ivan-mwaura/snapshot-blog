@@ -2090,7 +2090,7 @@
    //STYLES FOR THE CSS TRANSITIONS(ROUTING) 
 
   .fade-enter {
-    opacity: 0;
+    opacity: 1;
     background-color: transparent !important;
   }
   
@@ -2109,7 +2109,7 @@
 
   
   .fade-exit-active {
-    opacity: 0;
+    opacity: 1;
     transition: opacity 2s;
     background-color:transparent !important;
   }

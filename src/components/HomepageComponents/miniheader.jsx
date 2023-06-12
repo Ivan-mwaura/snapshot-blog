@@ -94,7 +94,9 @@ const MiniHeader = () => {
         const imageType = 'vector';
         dispatch(setDataType(imageType))
     }
-   
+    function handleImageType4(){       
+        navigate('/videospage')
+    }
 
     return(
         <div className='mini--header'>
@@ -106,7 +108,7 @@ const MiniHeader = () => {
                     <button className='butn2' onClick={handleImageType1} > <FontAwesomeIcon icon={faCamera}/>&nbsp; Photos</button>                   
                     <button className='butn3' onClick={handleImageType3}><FontAwesomeIcon icon={faVectorSquare}/>&nbsp; Vectors</button>
                     <button className='butn4'  onClick={handleImageType2}><FontAwesomeIcon icon={faBrush}/>&nbsp; Illustrations</button>
-                    <button className='butn5' ><FontAwesomeIcon icon={faVideo}/>&nbsp; Videos</button>
+                    <button className='butn5' onClick={handleImageType4}><FontAwesomeIcon icon={faVideo}/>&nbsp; Videos</button>
                     <button className='butn6'><FontAwesomeIcon icon={faMusic}/>&nbsp; Music</button>
                     <button className='butn6'><FontAwesomeIcon icon={faFileAudio}/>&nbsp; Sound Effects</button>
                     <button className='butn7'><FontAwesomeIcon icon={faFileVideo}/>&nbsp; Gifs</button>

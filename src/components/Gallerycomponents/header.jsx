@@ -64,8 +64,15 @@ const Header = () => {
 
   function handleQuery(value){
   
+    if(value === 'video'){
+      navigate('/videospage')
+   }
+   else if(value === 'photo'){
+    navigate('/gallerypage')
+   }
+
    dispatch(setQuery(value))
-   setShowExplorer((prevState) => !prevState)
+   setShowExplorer((prevState) => !prevState) 
   }
 
   return (
