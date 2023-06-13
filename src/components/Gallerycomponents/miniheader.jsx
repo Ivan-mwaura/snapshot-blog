@@ -71,8 +71,9 @@ const MiniHeader = () =>{
 
             <button 
               onClick={handleJustifyClick} 
+              className='button'
             >
-              <Sliders className="filter"/> filter   
+              <Sliders className="filter"/> Filter   
             </button>
 
         {isOpen && (

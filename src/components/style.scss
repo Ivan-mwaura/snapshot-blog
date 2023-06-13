@@ -698,7 +698,7 @@
       
       display: none;
 
-      button{
+      .button{
         border: none;
         width: 200px;
           height: 40px;
@@ -717,6 +717,7 @@
 
         @include tecno{
           width: 150px;
+          
         }
       }
       
@@ -800,11 +801,9 @@
        
       } 
     }
-      
-      
-    }
+  }
 
-
+  
     
 
 
@@ -2033,7 +2032,7 @@
         }
       }
       @include tablet{
-        .butn7, .butn6, .butn5{
+        .butn7, .butn6, .butn4{
           display: none;
         }
         margin-left: 10px;

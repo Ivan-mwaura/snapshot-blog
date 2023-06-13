@@ -20,7 +20,7 @@ const FilterMedia = () => {
     { label: 'Photos', value: 'photos', icon: faImage },
     { label: 'Illustrations', value: 'illustrations', icon: faPalette },
     { label: 'Vectors', value: 'vectors', icon: faVectorSquare },
-    { label: 'Videos', value: 'videos', icon: faVideo },
+    { label: 'Videos', value: 'video', icon: faVideo },
     { label: 'Music', value: 'music', icon: faMusic },
     { label: 'Sound Effects', value: 'sound-effects', icon: faVolumeUp },
     { label: 'Gifs', value: 'gifs', icon: faImages },
@@ -36,7 +36,13 @@ const FilterMedia = () => {
     setSelectedOption(option);
     dispatch(setQuery(option.value))
     setIsOpen(false);
-    navigate('/gallerypage')
+    
+    if(option.value === 'video'){
+      navigate('/videospage')
+    }
+    else{
+      navigate('/gallerypage')
+    }
 
   };
 

@@ -20,7 +20,7 @@ const Media = () => {
     { label: 'Photos', value: 'photo' },
     { label: 'Illustrations', value: 'illustration' },
     { label: 'Vectors', value: 'vector' },
-    { label: 'Videos', value: 'videos' },
+    { label: 'Videos', value: 'video' },
     { label: 'Music', value: 'music' },
     { label: 'Sound Effects', value: 'sound-effects' },
     { label: 'Gifs', value: 'gifs' },
@@ -36,7 +36,14 @@ const Media = () => {
    
     dispatch(setQuery(option.value))
     setIsOpen(false);
-    navigate('/gallerypage')
+    
+    if(option.value === 'video'){
+      navigate('/videospage')
+    }
+    else{
+      navigate('/gallerypage')
+    }
+
   };
 
 //repective icons for each option **stored as an object** then mapped to the respective option
@@ -44,7 +51,7 @@ const Media = () => {
     photo: faImage,
     illustration: faPalette,
     vector: faVectorSquare,
-    videos: faVideo,
+    video: faVideo,
     music: faMusic,
     "sound-effects": faVolumeUp,
     gifs: faImages,
